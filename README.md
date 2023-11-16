@@ -3,25 +3,13 @@
 
 - DB 설계
 1. user 정보 저장 db 
-    유저이름, 이메일, 가입한 상품 목록
+    유저이름, 이메일, 가입한 상품 목록 + costom model
 
-2. 금융 상품 데이터(예금)
-    base ------------------
-    'fin_prdt_cd'
-    'kor_co_nm'
-    'fin_prdt_nm'
-    'etc_note'
-    'join_deny'
-    'join_member'
-    'join_way'
-    'spcl_cnd'
-    options --------------
-    'fin_prdt_cd'
-    'intr_rate_type_nm'
-    'intr_rate'                          
-    'intr_rate2'                      
-    'save_trm'
+2. 금융 상품 데이터(예금, 적금)
 
 3. 환율 정보 계산기
    환율 데이터 json 으로 받아와서 front로 보내기 < 
-        
+   환율 데이터 vue 페이지에 출력 select 활용
+
+4. 게시판 페이지
+    model 구성 + view 함수 작성
