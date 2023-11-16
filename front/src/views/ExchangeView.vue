@@ -4,7 +4,10 @@
         <div class="exchange">
             <select name="cur_nm" v-model="cur_another">
                 <option v-for="country in store.exchange">{{ country.cur_nm }}</option>
+
             </select>
+            <input type="text">
+            <input type="text" value="">
         </div>
     </div>
 </template>
