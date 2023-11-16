@@ -3,9 +3,11 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from django.conf import settings
-from .serializers import DepositProductsSerializer, DepositOptionsSerializer
-from .models import DepositProducts, DepositOptions
+from .serializers import DepositProductsSerializer, DepositOptionsSerializer, InstallmentOptionsSerializer, InstallmentProductsSerializer
+from .models import DepositProducts, InstallmentProducts
 import requests
+import json
+from django.http import JsonResponse
 
 api_key = 'f09a043ec54a3da97ecf32c4027e41b8'
 
@@ -102,7 +104,7 @@ def save_installment_savings_products(request):
         }
 
         # 저장하기 위해 데이터를 포장
-        serializer = DepositProductsSerializer(data=save_data)
+        serializer = InstallmentProductsSerializer(data=save_data)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
 
@@ -114,11 +116,12 @@ def save_installment_savings_products(request):
             'intr_rate_type_nm': option.get('intr_rate_type_nm'),  
             'intr_rate': option.get('intr_rate'),                           
             'intr_rate2': option.get('intr_rate2'),                       
-            'save_trm': option.get('save_trm'),   
+            'save_trm': option.get('save_trm'),
+            'rsrv_type_nm': option.get('rsrv_type_nm'),   
         }
 
-        product = get_object_or_404(DepositProducts, fin_prdt_cd=option.get('fin_prdt_cd'))
-        serializer = DepositOptionsSerializer(data=option_data)
+        product = get_object_or_404(InstallmentProducts, fin_prdt_cd=option.get('fin_prdt_cd'))
+        serializer = InstallmentOptionsSerializer(data=option_data)
         if serializer.is_valid(raise_exception=True):
             serializer.save(product=product)
             
@@ -130,12 +133,12 @@ def save_installment_savings_products(request):
 @api_view(['GET', 'POST'])
 def installment_savings_products(request):
     if request.method == 'GET':
-        products = DepositProducts.objects.all()
-        serializer = DepositProductsSerializer(products, many=True)
+        products = InstallmentProducts.objects.all()
+        serializer = InstallmentProductsSerializer(products, many=True)
         return Response(serializer.data)
 
     elif request.method == 'POST':
-        serializer = DepositProductsSerializer(data=request.data)
+        serializer = InstallmentProductsSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -144,3 +147,11 @@ def installment_savings_products(request):
             'message': '이미 있는 데이터이거나, 데이터가 잘못 입력되었습니다.'
         }
         return Response(data, status=status.HTTP_400_BAD_REQUEST)
+    
+
+def exchange(request):
+    API_KEY = 'DBAH4dbneY14sHfaMcBHfx0eJ7AM8lkN'
+    URL = f' https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey={API_KEY}&searchdate=20180102&data=AP01'
+    response = requests.get(URL).json()
+    print(response)
+    return JsonResponse(response, safe=False)
