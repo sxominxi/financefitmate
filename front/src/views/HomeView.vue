@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
     <div>
       <h1>Home</h1>
       <title>주소로 장소 표시하기</title>
@@ -16,7 +16,7 @@
 <script setup>
 import { ref } from 'vue'
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8d2a6579e21785248893d93db12118c8&libraries=services"></script>
+
 
 const list_city = ref([])
 const select_area = ref([])
@@ -91,4 +91,4 @@ geocoder.addressSearch(find_area, function(result, status) {
 
 <style scoped>
 
-</style> -->
+</style>
