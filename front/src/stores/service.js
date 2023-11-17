@@ -12,7 +12,6 @@ export const useServiceStore = defineStore('service', () => {
         })
         .then((res) => {
             exchange.value = res.data
-            console.log(res.data)
         })
     }
     return { getExchanges, exchange }
