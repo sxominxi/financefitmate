@@ -8,4 +8,5 @@ urlpatterns = [
     path('save-installment-savings_products/', views.save_installment_savings_products),
     path('installment-savings_products/', views.installment_savings_products),
     path('exchange/', views.exchange),
+
 ]

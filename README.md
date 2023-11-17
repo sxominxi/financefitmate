@@ -18,3 +18,7 @@
 # 2일차 231117
     pigma 만들기, kakao map 만들기, 추천 알고리즘 제외 backend 구성
 
+- pigma 만들기 -> 주말까지 하기
+- kakako map 꼭 성공하기
+- 
+

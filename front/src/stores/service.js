@@ -4,15 +4,32 @@ import { defineStore } from 'pinia'
 import { useRouter } from 'vue-router'
 
 export const useServiceStore = defineStore('service', () => {
+    const API_URL = 'http://127.0.0.1:8000'
+
+    const depositproducts = ref([])
     const exchange = ref([])
     const getExchanges = function() {
         axios({
             method: 'get',
-            url: 'http://127.0.0.1:8000/service/exchange/',
+            url: `${API_URL}/service/exchange/`,
         })
         .then((res) => {
             exchange.value = res.data
         })
     }
-    return { getExchanges, exchange }
+    const getDepositProducts = function() {
+        axios({
+            method: 'get',
+            url: `${API_URL}/service/deposit-products/`
+        })
+        .then((res) => {
+            console.log(res.data)
+            depositproducts.value = res.data
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }
+
+    return { getExchanges, exchange, getDepositProducts, depositproducts}
 }, { persist: true })

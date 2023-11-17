@@ -14,7 +14,7 @@ class DepositProductsSerializer(serializers.ModelSerializer):
 class DepositOptionsSerializer(serializers.ModelSerializer):
     class Meta():
         model = DepositOptions
-        exclude = ('fin_prdt_cd',)
+        fields = '__all__'
         read_only_fields = ('product',)
 
 
@@ -31,5 +31,5 @@ class InstallmentProductsSerializer(serializers.ModelSerializer):
 class InstallmentOptionsSerializer(serializers.ModelSerializer):
     class Meta():
         model = InstallmentOptions
-        exclude = ('fin_prdt_cd',)
+        fields = '__all__'
         read_only_fields = ('product',)
