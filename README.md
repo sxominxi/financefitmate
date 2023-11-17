@@ -13,3 +13,8 @@
 
 4. 게시판 페이지
     model 구성 + view 함수 작성
+
+
+# 2일차 231117
+    pigma 만들기, kakao map 만들기, 추천 알고리즘 제외 backend 구성
+
