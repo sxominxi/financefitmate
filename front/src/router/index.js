@@ -7,6 +7,7 @@ import DepositDetailView from  '@/views/DepositDetailView.vue'
 import InstallmentProductsView from '@/views/InstallmentProductsView.vue'
 import installmentDetailView from '@/views/installmentDetailView.vue'
 
+import MyPageView from '@/views/MyPageView.vue'
 import MapView from '@/views/MapView.vue'
 
 const router = createRouter({
@@ -46,6 +47,11 @@ const router = createRouter({
       path: '/service/map/',
       name: 'MapView',
       component: MapView
+    },
+    {
+      path: '/mypage',
+      name: 'MyPageView',
+      component: MyPageView
     },
   ]
 })

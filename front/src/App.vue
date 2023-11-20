@@ -9,6 +9,7 @@ import { RouterLink, RouterView } from 'vue-router'
   <RouterLink :to="{ name: 'DepositProductsView' }">DepositProducts |</RouterLink>
   <RouterLink :to="{ name: 'InstallmentProductsView' }">InstallmentProducts |</RouterLink>
   <RouterLink :to="{ name: 'MapView' }">Map |</RouterLink>
+  <RouterLink :to="{ name: 'MyPageView' }">MyPage |</RouterLink>
 
   <RouterView />
 </template>
