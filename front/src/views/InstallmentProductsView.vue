@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>정기 예금</h1>
+        <h1>정기 적금</h1>
     </div>
     <select class="bank" v-model="bank">
         <option value="" selected disable3d hidden>은행</option>
@@ -28,58 +28,60 @@
         <option value="24">24개월</option>
         <option value="36">36개월</option>
     </select>
-    <button @click="deposit_list">검색</button>
-    <div v-for="product in find_deposit" :key="product.fin_prdt_cd" @click="goDetail(product.id)">
+    <button @click="installment_list">검색</button>
+    <div v-for="product in find_installment" :key="product.id" @click="goDetail(product.id)">
         <p>금융 회사: {{ product.kor_co_nm }}</p>
         <p>금융 상품명: {{ product.fin_prdt_nm }}</p>
         <div v-for="product_info in product.option_set" :key="product_info.id">
             <div v-if="product_info.save_trm == duration">
                 <p>저축 기간: {{ product_info.save_trm }} 개월</p>
+                <p>저축 방식: {{ product_info.rsrv_type_nm }}</p>
                 <p>이자 계산 방식: {{ product_info.intr_rate_type_nm }}</p>
                 <p>최고 우대 금리: {{ product_info.intr_rate2 }}</p>
+                <button @click="goDetail(product.id)">자세히 보기</button>
+                <hr>
             </div>
         </div>
-        <button @click="goDetail(product.id)">자세히 보기</button>
         <hr>
     </div>
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router';
 import { useServiceStore } from '@/stores/service'
 import { ref, onMounted, computed } from 'vue'
+import { useRouter } from 'vue-router';
 import axios from 'axios';
 
 const router = useRouter()
 const store = useServiceStore()
 const bank = ref(null)
 const duration = ref(null)
-const find_deposit = ref([])
+const find_installment = ref([])
 
 onMounted(() => {
-    store.getDepositProducts()
+    store.getInstallmentProducts()
 })
 
-const deposit_list = function() {
-    find_deposit.value = []
+const installment_list = function() {
+    find_installment.value = []
 
-    for (const find_bank of store.depositproducts) {
+    for (const find_bank of store.installmentproducts) {
         if ( find_bank.kor_co_nm === bank.value) {
             for (const find_term of find_bank.option_set) {
                 if ( find_term.save_trm == duration.value ) {
-                    find_deposit.value.push(find_bank)
+                    find_installment.value.push(find_bank)
                 }
             }
         }
     }
 }
 
-const goDetail = function(deposit_id) {
+const goDetail = function(installment_id) {
     router.push({
-        name: 'DepositDetailView',
-        params: { id: deposit_id}
+        name: 'installmentDetailView',
+        params: { id: installment_id }
     })
-}
+}   
 
 </script>
 

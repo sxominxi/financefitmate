@@ -84,6 +84,15 @@ def deposit_products(request):
         return Response(data, status=status.HTTP_400_BAD_REQUEST)
 
 
+# 정기 예금 상품 디테일
+@api_view(['GET'])
+def deposit_detail(request, deposit_pk):
+    product = get_object_or_404(DepositProducts, pk=deposit_pk)
+    serializer = DepositProductsSerializer(product)
+    return Response(serializer.data)
+
+# -----------------------------------------------------------------------------------------
+
 # 정기 적금 데이터 저장
 @api_view(['GET'])
 def save_installment_savings_products(request):
@@ -148,6 +157,14 @@ def installment_savings_products(request):
         }
         return Response(data, status=status.HTTP_400_BAD_REQUEST)
     
+# 정기 적금 상품 디테일
+@api_view(['GET'])
+def installment_detail(request, installment_pk):
+    product = get_object_or_404(InstallmentProducts, pk=installment_pk)
+    serializer = InstallmentProductsSerializer(product)
+    return Response(serializer.data)
+
+# ---------------------------------------------------------------------------------------------
 
 # 환율 계산기
 def exchange(request):
