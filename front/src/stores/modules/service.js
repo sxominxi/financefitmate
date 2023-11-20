@@ -51,7 +51,6 @@ export const useServiceStore = defineStore('service', () => {
         })
         .then((res) => {
             detailInstallment.value = res.data
-            console.log(res.data)
         })
         .catch((err) => {
             console.log(err)

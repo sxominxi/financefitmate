@@ -40,6 +40,7 @@
         <div v-else>
             <strong>가입한 정기 적금 상품이 없습니다.</strong>
         </div>
+        <hr>
             <h2>가입한 상품 금리</h2>
         <div>
             <Bar :data="chartData" :options="chartOptions" />
@@ -52,7 +53,7 @@
 <script setup>
 import { Bar } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router';
 import { useServiceStore } from '../stores/modules/service';
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
@@ -66,8 +67,18 @@ deposits.value = JSON.parse(localStorage.getItem('become_deposit')) || []
 const installments = ref([])
 installments.value = JSON.parse(localStorage.getItem('become_installment')) || []
 
+const graph_x = ref([])
+const getX = function() {
+    for (const x_nm of deposits.value) {
+        graph_x.value.push(x_nm[0].fin_prdt_nm.replace('\n',''))
+    }
+    return graph_x
+}
+
+console.log(graph_x)
+
 const chartData = ref({
-    labels: [ 'January', 'February', 'March'],
+    labels: [ graph_x.value ],
     datasets: [
       {
         label: '저축 금리',
@@ -86,6 +97,10 @@ const chartData = ref({
     maintainAspectRatio: false
   })
 
+
+  onMounted(() => {
+    getX()
+  })
 </script>
 
 <style scoped>
