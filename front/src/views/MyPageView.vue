@@ -40,13 +40,22 @@
         <div v-else>
             <strong>가입한 정기 적금 상품이 없습니다.</strong>
         </div>
+            <h2>가입한 상품 금리</h2>
+        <div>
+            <Bar :data="chartData" :options="chartOptions" />
+        </div>
     </div>
 </template>
 
+
+
 <script setup>
+import { Bar } from 'vue-chartjs'
+import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router';
 import { useServiceStore } from '../stores/service';
+ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
 const store = useServiceStore()
 
@@ -57,6 +66,25 @@ deposits.value = JSON.parse(localStorage.getItem('become_deposit')) || []
 const installments = ref([])
 installments.value = JSON.parse(localStorage.getItem('become_installment')) || []
 
+const chartData = ref({
+    labels: [ 'January', 'February', 'March'],
+    datasets: [
+      {
+        label: '저축 금리',
+        backgroundColor: '#f87979',
+        data: [40, 20, 40]
+      },
+      {
+        label: '최대 우대 금리',
+        backgroundColor: '#f15851',
+        data: [40, 20, 40]
+      }
+    ]
+  })
+  const chartOptions = ref({
+    responsive: true,
+    maintainAspectRatio: false
+  })
 
 </script>
 
