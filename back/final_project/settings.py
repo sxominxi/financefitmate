@@ -34,14 +34,17 @@ INSTALLED_APPS = [
     'service',
     'accounts',
     'posts',
-    
     # DRF
     'rest_framework',
     'rest_framework.authtoken',
     # REST_AUTH
     'dj_rest_auth',
+    'corsheaders',
     'allauth',
     'allauth.account',
+    'allauth.socialaccount',
+    'dj_rest_auth.registration',
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -50,16 +53,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-# REST_FRAMEWORK = {
-#     # Authentication
-#     'DEFAULT_AUTHENTICATION_CLASSES': [
-#         'rest_framework.authentication.TokenAuthentication',
-#     ],
-#     # permission
-#     'DEFAULT_PERMISSION_CLASSES': [
-#         'rest_framework.permissions.AllowAny',
-#     ],
-# }
+SITE_ID = 1
+
+REST_FRAMEWORK = {
+    # Authentication
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    # permission
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+}
 
 
 ACCOUNT_ADAPTER = 'accounts.models.CustomAccountAdapter'

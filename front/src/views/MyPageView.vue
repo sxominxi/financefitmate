@@ -54,7 +54,7 @@ import { Bar } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router';
-import { useServiceStore } from '../stores/service';
+import { useServiceStore } from '../stores/modules/service';
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
 const store = useServiceStore()

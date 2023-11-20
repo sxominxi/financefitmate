@@ -15,7 +15,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useServiceStore } from '@/stores/service';
+import { useServiceStore } from '@/stores/modules/service';
 import axios from 'axios'
 
 const store = useServiceStore()

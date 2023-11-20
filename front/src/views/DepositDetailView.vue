@@ -21,7 +21,7 @@
 
 <script setup>
 import { useRoute, useRouter } from 'vue-router'
-import { useServiceStore } from '../stores/service'
+import { useServiceStore } from '../stores/modules/service'
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 

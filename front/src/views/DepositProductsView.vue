@@ -46,7 +46,7 @@
 
 <script setup>
 import { useRouter } from 'vue-router';
-import { useServiceStore } from '@/stores/service'
+import { useServiceStore } from '@/stores/modules/service'
 import { ref, onMounted, computed } from 'vue'
 import axios from 'axios';
 
