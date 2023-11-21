@@ -1,9 +1,9 @@
 <template>
    <div>
      <h5>{{ post.pk }}번째 게시글</h5>
-     <p>{{ post.title }}</p>
-     <p>{{ post.content }}</p>
-     <p>{{ post.user }}</p>
+     <p>제목 :{{ post.title }}</p>
+     <p>내용 : {{ post.content }}</p>
+     <p>작성자 : {{ post.user }}</p>
      <RouterLink :to="{ name: 'DetailView', params: { id: post.pk }}">
        [Detail]
      </RouterLink>

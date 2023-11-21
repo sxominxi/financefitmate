@@ -1,6 +1,6 @@
 <template>
    <div>
-     <h1>Article Page</h1>
+     <h1>Post Page</h1>
      <RouterLink :to="{ name: 'CreateView' }">
        [CREATE]
      </RouterLink>

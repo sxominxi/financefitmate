@@ -16,11 +16,16 @@
        <input type="text" v-model="content">
        <input type="submit" value="댓글 작성">
     </form>
-   <div v-if="computedComments.length > 0">
-       <p v-for="comment in computedComments">{{ comment.post }}{{ comment.content }}</p>
-       <!-- <button @click="goUpdate">수정</button> <button @click="deletePost">제거</button> -->
-       <hr>
-   </div>
+    <div v-if="computedComments.length > 0">
+    <div v-for="comment in computedComments" :key="comment.id">
+    <p>{{ comment.content }}</p>
+      <div v-if="comment.user === store.username">
+        <button @click="editComment(comment)">수정</button>
+        <button @click="deleteComment(comment.id)">제거</button>
+      </div>
+    </div>
+      <hr>
+    </div>
  </template>
  
  <script setup>
@@ -76,6 +81,26 @@
    .catch((err) => {
      console.log(err)
    })
+ }
+
+//   const commentUpdate = function () {
+//     router.push({
+//              name: 'UpdateView',
+//              params: { id: postId.value }
+//      })
+//  }
+ 
+ const deleteComment = function () {
+     axios({
+         method: 'delete',
+         url: `${store.API_URL}/comments/${postId.value}/`
+     })
+     .then((res) => {
+       router.push({ name: 'DetailView'})
+     })
+     .catch((err) => {
+         console.log(err)
+     })
  }
  
  const computedComments = computed(() => {
