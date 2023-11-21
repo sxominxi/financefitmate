@@ -14,6 +14,4 @@
  import PostListItem from '@/components/PostListItem.vue'
  
  const store = useCounterStore()
- console.log(store.posts)
  </script>
- 

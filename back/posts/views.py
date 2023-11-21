@@ -8,7 +8,7 @@ from .models import Post, Comment
 @api_view(['GET', 'POST'])
 def post_list(request):
     if request.method == 'GET':
-        posts = get_list_or_404(Post)
+        posts = Post.objects.all()
         serializer = PostListSerializer(posts, many=True)
         return Response(serializer.data)
     
@@ -21,7 +21,7 @@ def post_list(request):
 
 @api_view(['GET', 'DELETE', 'PUT'])
 def post_detail(request, post_pk):
-    post = get_object_or_404(Post, pk=post_pk)
+    post = Post.objects.get(pk=post_pk)
     if request.method == 'GET':
         serializer = PostSerializer(post)
         return Response(serializer.data)
@@ -39,7 +39,7 @@ def post_detail(request, post_pk):
 
 @api_view(['GET'])
 def comment_list(request):
-    comments = get_list_or_404(Comment)
+    comments = Comment.objects.all()
     if request.method == 'GET':
         serializer = CommentSerializer(comments, many=True)
         return Response(serializer.data)
