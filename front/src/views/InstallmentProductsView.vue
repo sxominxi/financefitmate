@@ -3,31 +3,15 @@
         <h1>정기 적금</h1>
     </div>
     <select class="bank" v-model="bank">
-        <option value="" selected disable3d hidden>은행</option>
-        <option value="우리은행">우리은행</option>
-        <option value="한국스탠다드차타드은행">한국스탠다드차타드은행</option>
-        <option value="대구은행">대구은행</option>
-        <option value="부산은행">부산은행</option>
-        <option value="광주은행">광주은행</option>
-        <option value="제주은행">제주은행</option>
-        <option value="전북은행">전북은행</option>
-        <option value="경남은행">경남은행</option>
-        <option value="한국산업은행">한국산업은행</option>
-        <option value="국민은행">국민은행</option>
-        <option value="신한은행">신한은행</option>
-        <option value="농협은행주식회사">농협은행주식회사</option>
-        <option value="하나은행">하나은행</option>
-        <option value="주식회사 케이뱅크">주식회사 케이뱅크</option>
-        <option value="주식회사 카카오뱅크">주식회사 카카오뱅크</option>
-        <option value="토스뱅크 주식회사">토스뱅크 주식회사</option>
+        <option :value=null>은행을 선택하세요.</option>
+        <option v-for="bank_select in bank_list" :value="bank_select">{{ bank_select }}</option>
+    </select>
 
-    </select>
     <select class="duration" v-model="duration">
-        <option value="6">6개월</option>
-        <option value="12">12개월</option>
-        <option value="24">24개월</option>
-        <option value="36">36개월</option>
+        <option :value=null selected>기간을 선택하세요.</option>
+        <option v-for="duration_select in duration_list" :value="duration_select">{{ duration_select }}</option>
     </select>
+
     <button @click="installment_list">검색</button>
     <div v-for="product in find_installment" :key="product.id" @click="goDetail(product.id)">
         <p>금융 회사: {{ product.kor_co_nm }}</p>
@@ -57,6 +41,9 @@ const store = useServiceStore()
 const bank = ref(null)
 const duration = ref(null)
 const find_installment = ref([])
+
+const bank_list = ref(['우리은행', '한국스탠다드차타드은행', '대구은행', '부산은행', '광주은행', '부산은행', '제주은행', '제주은행', '전북은행', '경남은행', '한국산업은행', '국민은행', '신한은행', '농협은행주식회사', '하나은행', '주식회사 케이뱅크', '주식회사 카카오뱅크', '토스뱅크 주식회사'])
+const duration_list = ref([6, 12, 24, 36])
 
 onMounted(() => {
     store.getInstallmentProducts()
