@@ -67,18 +67,17 @@ deposits.value = JSON.parse(localStorage.getItem('become_deposit')) || []
 const installments = ref([])
 installments.value = JSON.parse(localStorage.getItem('become_installment')) || []
 
-const graph_x = ref([])
+const graph_x = []
 const getX = function() {
     for (const x_nm of deposits.value) {
-        graph_x.value.push(x_nm[0].fin_prdt_nm.replace('\n',''))
+        graph_x.push(x_nm[0].fin_prdt_nm.replace('\n',''))
     }
-    return graph_x
 }
 
 console.log(graph_x)
 
 const chartData = ref({
-    labels: [ graph_x.value ],
+    labels:  graph_x,
     datasets: [
       {
         label: '저축 금리',
