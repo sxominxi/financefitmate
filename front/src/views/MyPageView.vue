@@ -1,6 +1,7 @@
 <template>
     <div>
         <h1>마이 페이지</h1>
+        <h2>{{ store.username }}님 반갑습니다.</h2>
         <h2>가입한 정기 예금 상품</h2>
         <div v-if="deposits.length > 0">
             <div v-for="product in deposits">
@@ -43,7 +44,11 @@
         <hr>
             <h2>가입한 상품 금리</h2>
         <div>
-            <Bar :data="chartData" :options="chartOptions" />
+            <button @click="createChart">내 상품 금리 정보 비교하기</button>
+            <div v-if="IsChart">
+                <Bar :data="chartData" :options="chartOptions"/>
+            </div>
+        
         </div>
     </div>
 </template>
@@ -55,10 +60,10 @@ import { Bar } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router';
-import { useServiceStore } from '../stores/modules/service';
+import { useCounterStore } from '../stores/modules/counter';
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
-const store = useServiceStore()
+const store = useCounterStore()
 
 const deposits = ref([])
 deposits.value = JSON.parse(localStorage.getItem('become_deposit')) || []
@@ -67,39 +72,62 @@ deposits.value = JSON.parse(localStorage.getItem('become_deposit')) || []
 const installments = ref([])
 installments.value = JSON.parse(localStorage.getItem('become_installment')) || []
 
-const graph_x = []
+
+const graph_x = ['평균 금리']
+const graph_y1 = [3.99]
+const graph_y2 = [3.99]
+
 const getX = function() {
     for (const x_nm of deposits.value) {
         graph_x.push(x_nm[0].fin_prdt_nm.replace('\n',''))
+        for(const y_nm of x_nm[0].option_set) {
+            if (y_nm.save_trm === x_nm[1]){
+                graph_y1.push(y_nm.intr_rate)
+                graph_y2.push(y_nm.intr_rate2)
+            }   
+        }
     }
 }
 
-console.log(graph_x)
+const IsChart = ref(false)
+const chartData = ref({})
+const chartOptions = ref({})
 
-const chartData = ref({
+const createChart = function() {
+    IsChart.value = true
+    chartData.value = {
+    active: true,
     labels:  graph_x,
     datasets: [
-      {
+        {
         label: '저축 금리',
         backgroundColor: '#f87979',
-        data: [40, 20, 40]
-      },
-      {
+        data: graph_y1
+        },
+        {
         label: '최대 우대 금리',
         backgroundColor: '#f15851',
-        data: [40, 20, 40]
-      }
+        data: graph_y2
+        }
     ]
-  })
-  const chartOptions = ref({
+    }
+    chartOptions.value = {
     responsive: true,
-    maintainAspectRatio: false
-  })
+    // maintainAspectRatio: true,
+    scales: {
+        y: {
+            suggestedMin: 0,
+            suggestedMax: 5,
+            beginAtZero: true
+        }}
+    }
+}
 
 
-  onMounted(() => {
+onMounted(() => {
     getX()
-  })
+})
+
 </script>
 
 <style scoped>

@@ -7,7 +7,9 @@
        <p>작성일 : {{ store.post.created_at }}</p>
        <p>수정일 : {{ store.post.updated_at }}</p>
      </div>
-     <button @click="goUpdate">수정</button> <button @click="deletePost">제거</button>
+     <div v-if="store.post.user == store.username">
+       <button @click="goUpdate">수정</button> <button @click="deletePost">제거</button>
+     </div>
    </div>
    <form @submit.prevent="createComment">
        <label class="me-2">내용 :</label>
@@ -36,6 +38,9 @@
    store.getDetail(postId.value)
  })
  
+console.log(store.post.user)
+console.log(store.username)
+
  const goUpdate = function () {
    router.push({
              name: 'update',
