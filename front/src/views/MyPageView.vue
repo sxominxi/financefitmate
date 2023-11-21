@@ -1,9 +1,13 @@
 <template>
     <div>
-        <h1>마이 페이지</h1>
-        <h2>{{ store.username }}님 반갑습니다.</h2>
-        <h2>가입한 정기 예금 상품</h2>
-        <div v-if="deposits.length > 0">
+      <h1>마이 페이지</h1>
+      <h2>{{ store.username }}님 반갑습니다.</h2>
+
+      <!-- 회원 정보 수정 페이지로 이동하는 버튼 -->
+      <button @click="goToUpdateProfile">회원정보 수정</button>
+
+      <h2>가입한 정기 예금 상품</h2>
+         <div v-if="deposits.length > 0">
             <div v-for="product in deposits">
                 <h4>가입 상품: {{ product[0].fin_prdt_nm }}</h4>
                 <p>금융회사 명: {{ product[0].kor_co_nm }}</p>
@@ -64,6 +68,7 @@ import { useCounterStore } from '../stores/modules/counter';
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
 const store = useCounterStore()
+const router = useRouter()
 
 const deposits = ref([])
 deposits.value = JSON.parse(localStorage.getItem('become_deposit')) || []
@@ -122,6 +127,10 @@ const createChart = function() {
         }}
     }
 }
+
+const goToUpdateProfile = () => {
+  router.push({ name: 'UpdateUserView' }); 
+};
 
 
 onMounted(() => {

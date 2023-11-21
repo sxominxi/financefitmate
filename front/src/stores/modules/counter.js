@@ -107,10 +107,11 @@ export const useCounterStore = defineStore('counter', () => {
     axios({
       method: 'post',
       url: `${API_URL}/accounts/logout/`,
+      // headers: {Authorization: `Token ${token.value}`}
     })
       .then((res) => {
         token.value = null
-        router.push({ name: 'PostView' })
+        router.push({ name: 'HomeView' })
       })
       .catch((err) => {
         console.log(err)

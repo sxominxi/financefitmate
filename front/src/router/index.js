@@ -16,6 +16,7 @@ import CreateView from '@/views/CreateView.vue'
 import SignUpView from '@/views/SignUpView.vue'
 import LogInView from '@/views/LogInView.vue'
 import UpdateView from '@/views/UpdateView.vue'
+import UpdateUserView from '@/views/UpdateUserView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -88,8 +89,14 @@ const router = createRouter({
     },
     {
       path: '/post/:id',
-      name: 'update',
+      name: 'UpdateView',
       component: UpdateView
+    },
+
+    {
+      path: '/account/update-profile/',
+      name: 'UpdateUserView',
+      component: UpdateUserView
     },
   ]
 })

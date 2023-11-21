@@ -18,8 +18,9 @@
     </form>
    <div v-if="computedComments.length > 0">
        <p v-for="comment in computedComments">{{ comment.post }}{{ comment.content }}</p>
+       <!-- <button @click="goUpdate">수정</button> <button @click="deletePost">제거</button> -->
        <hr>
-    </div>
+   </div>
  </template>
  
  <script setup>
@@ -41,7 +42,7 @@
 
  const goUpdate = function () {
    router.push({
-             name: 'update',
+             name: 'UpdateView',
              params: { id: postId.value }
      })
  }
