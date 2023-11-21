@@ -5,7 +5,7 @@ import axios from 'axios'
 
 export const useCounterStore = defineStore('counter', () => {
   const router = useRouter()
-  const articles = ref([])
+  const posts = ref([])
   const API_URL = 'http://127.0.0.1:8000'
   const token = ref(null)
   const isLogin = computed(() => {
@@ -17,14 +17,15 @@ export const useCounterStore = defineStore('counter', () => {
   })
 
   // DRF에 article 조회 요청을 보내는 action
-  const getArticles = function () {
+  const getPosts = function () {
     axios({
       method: 'get',
-      url: `${API_URL}posts/`,
+      url: `${API_URL}/posts/`,
+      headers: {Authorization: `Token ${token.value}`}
     })
       .then((res) =>{
         // console.log(res)
-        articles.value = res.data
+        posts.value = res.data
       })
       .catch((err) => {
         console.log(err)
@@ -64,7 +65,7 @@ export const useCounterStore = defineStore('counter', () => {
       .then((res) => {
         console.log(res.data)
         token.value = res.data.key
-        router.push({ name: 'ArticleView' })
+        router.push({ name: 'PostView' })
       })
       .catch((err) => {
         console.log(err)
@@ -78,12 +79,12 @@ export const useCounterStore = defineStore('counter', () => {
     })
       .then((res) => {
         token.value = null
-        router.push({ name: 'ArticleView' })
+        router.push({ name: 'PostView' })
       })
       .catch((err) => {
         console.log(err)
       })
   }
 
-  return { articles, API_URL, getArticles, signUp, logIn, token, isLogin, logOut }
+  return { posts, API_URL, getPosts, signUp, logIn, token, isLogin, logOut }
 }, { persist: true })

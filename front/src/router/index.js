@@ -10,7 +10,7 @@ import installmentDetailView from '@/views/installmentDetailView.vue'
 import MyPageView from '@/views/MyPageView.vue'
 import MapView from '@/views/MapView.vue'
 
-import ArticleView from '@/views/ArticleView.vue'
+import PostView from '@/views/PostView.vue'
 import DetailView from '@/views/DetailView.vue'
 import CreateView from '@/views/CreateView.vue'
 import SignUpView from '@/views/SignUpView.vue'
@@ -61,12 +61,12 @@ const router = createRouter({
     },
 
     {
-      path: '/',
-      name: 'ArticleView',
-      component: ArticleView
+      path: '/posts',
+      name: 'PostView',
+      component: PostView
     },
     {
-      path: '/articles/:id',
+      path: '/posts/:id',
       name: 'DetailView',
       component: DetailView
     },
@@ -92,13 +92,13 @@ import { useCounterStore } from '@/stores/modules/counter'
 
 router.beforeEach((to, from) => {
   const store = useCounterStore()
-  if (to.name === 'ArticleView' && !store.isLogin) {
+  if (to.name === 'CreateView' && !store.isLogin) {
     window.alert('로그인이 필요합니다.')
     return { name: 'LogInView' }
   }
   if ((to.name === 'SignUpView' || to.name === 'LogInView') && (store.isLogin)) {
     window.alert('이미 로그인 했습니다.')
-    return { name: 'ArticleView' }
+    return { name: 'PostView' }
   }
 })
 

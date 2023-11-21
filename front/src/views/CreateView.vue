@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>게시글 작성</h1>
-    <form @submit.prevent="createArticle">
+    <form @submit.prevent="createPost">
       <div>
         <label for="title">제목:</label>
         <input type="text" v-model.trim="title" id="title">
@@ -26,18 +26,21 @@ const content = ref(null)
 const store = useCounterStore()
 const router = useRouter()
 
-const createArticle = function () {
+const createPost = function () {
   axios({
     method: 'post',
-    url: `${store.API_URL}posts/`,
+    url: `${store.API_URL}/posts/`,
     data: {
       title: title.value,
       content: content.value
     },
+    headers: {
+      Authorization: `Token ${store.token}`
+    }
   })
     .then((res) => {
       // console.log(res)
-      router.push({ name: 'ArticleView' })
+      router.push({ name: 'PostView' })
     })
     .catch((err) => {
       console.log(err)

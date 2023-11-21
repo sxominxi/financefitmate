@@ -4,7 +4,7 @@
     <RouterLink :to="{ name: 'CreateView' }">
       [CREATE]
     </RouterLink>
-    <ArticleList />
+    <PostList />
   </div>
 </template>
 
@@ -12,12 +12,12 @@
 import { onMounted } from 'vue'
 import { useCounterStore } from '@/stores/modules/counter'
 import { RouterLink } from 'vue-router'
-import ArticleList from '@/components/ArticleList.vue'
+import PostList from '@/components/PostList.vue'
 
 const store = useCounterStore()
 
 onMounted(() => {
-  store.getArticles()
+  store.getPosts()
 })
 
 </script>
