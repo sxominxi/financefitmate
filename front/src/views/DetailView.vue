@@ -17,14 +17,13 @@
        <input type="submit" value="댓글 작성">
     </form>
     <div v-if="computedComments.length > 0">
-    <div v-for="comment in computedComments" :key="comment.id">
-    <p>{{ comment.content }}</p>
-      <div v-if="comment.user === store.username">
-        <button @click="editComment(comment)">수정</button>
-        <button @click="deleteComment(comment.id)">제거</button>
+      <div v-for="comment in computedComments" :key="comment.id">
+      <p>댓글 내용 : {{ comment.content }}</p>
+        <div v-if="comment.user == store.userInfo.pk">
+          <button @click="deleteComment(comment)">댓글 삭제</button>
+        </div>
       </div>
-    </div>
-      <hr>
+    <hr>
     </div>
  </template>
  
@@ -42,6 +41,7 @@
  onMounted(() => {
     store.getComment()
    store.getDetail(postId.value)
+   store.userFind()
  })
  
 
@@ -71,7 +71,10 @@
      method: 'post',
      url: `${store.API_URL}/posts/${postId.value}/comments/`,
      data: {
-       content: content.value
+       content: content.value,
+     },
+     headers: {
+       Authorization: `Token ${store.token}`
      }
    })
    .then((res) => {
@@ -83,30 +86,28 @@
    })
  }
 
-//   const commentUpdate = function () {
-//     router.push({
-//              name: 'UpdateView',
-//              params: { id: postId.value }
-//      })
-//  }
+const deleteComment = function (comment) {
+  axios({
+    method: 'delete',
+    url: `${store.API_URL}/posts/comments/${comment.id}/`,
+    headers: {
+      Authorization: `Token ${store.token}`
+    }
+  })
+  .then((res) => {
+    store.getComment()
+    router.push({ name: 'DetailView' })
+  })
+  .catch((err) => {
+    console.log(err)
+  })
+}
+
  
- const deleteComment = function () {
-     axios({
-         method: 'delete',
-         url: `${store.API_URL}/comments/${postId.value}/`
-     })
-     .then((res) => {
-       router.push({ name: 'DetailView'})
-     })
-     .catch((err) => {
-         console.log(err)
-     })
- }
- 
- const computedComments = computed(() => {
-   const filterComments = store.comments.filter((comment) => comment.post == postId.value)
-   return filterComments
- })
+const computedComments = computed(() => {
+  const filterComments = store.comments.filter((comment) => comment.post == postId.value)
+  return filterComments
+})
  
  </script>
  

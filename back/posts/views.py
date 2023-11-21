@@ -1,5 +1,6 @@
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from django.shortcuts import get_object_or_404, get_list_or_404
 from .serializers import PostListSerializer, PostSerializer, CommentSerializer
@@ -48,7 +49,30 @@ def comment_list(request):
 @api_view(['POST'])
 def comment_create(request, post_pk):
     post = get_object_or_404(Post, pk=post_pk)
-    serializer = CommentSerializer(data=request.data)
+    serializer = CommentSerializer(data=request.data, context={'post': post, 'user': request.user})
     if serializer.is_valid(raise_exception=True):
-        serializer.save(post=post)
+        serializer.save(post=post, user=request.user)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def comment_detail(request, comment_pk):
+    comment = get_object_or_404(Comment, pk=comment_pk)
+    if request.user == comment.user:
+        if request.method == 'DELETE':
+            comment.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+
+    
+# 댓글 삭제 View
+# @api_view(['DELETE'])
+# # @permission_classes([IsAuthenticated])
+# def delete_comment(request, post_pk, comment_pk):
+#     comment = Comment.objects.get(id=comment_pk, post_id=post_pk)
+    
+#     # 댓글 소유자인지 확인하는 로직을 구현 (예시로 작성)
+#     if comment.user != request.user:
+#         return Response(status=status.HTTP_403_FORBIDDEN)
+    
+#     comment.delete()
+#     return Response(status=status.HTTP_204_NO_CONTENT)

@@ -73,6 +73,8 @@ const router = useRouter()
 const deposits = ref([])
 deposits.value = JSON.parse(localStorage.getItem('become_deposit')) || []
 
+console.log(store.userInfo)
+
 
 const installments = ref([])
 installments.value = JSON.parse(localStorage.getItem('become_installment')) || []

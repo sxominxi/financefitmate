@@ -3,6 +3,8 @@
     <h1>Signup</h1>
     <form @submit.prevent="signUp">
       <p>username : <input type="text" v-model.trim="username"></p>
+      <p>lastname : <input type="text" v-model.trim="last_name"></p>
+      <p>firstname : <input type="text" v-model.trim="first_name"></p>
       <p>email: <input type="text" v-model.trim="email"></p>
       <p>password : <input type="password" v-model.trim="password1"></p>
       <p>password confirmation : <input type="password" v-model.trim="password2"></p>
@@ -21,6 +23,8 @@ import { useCounterStore } from '@/stores/modules/counter'
 
 const store = useCounterStore()
 const username = ref(null)
+const first_name = ref(null)
+const last_name = ref(null)
 const email = ref(null)
 const password1 = ref(null)
 const password2 = ref(null)
@@ -32,6 +36,8 @@ const salary = ref(null)
 const signUp = function () {
   const payload = {
     username: username.value,
+    first_name: first_name.value,
+    last_name: last_name.value,
     email: email.value,
     password1: password1.value,
     password2: password2.value,

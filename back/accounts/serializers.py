@@ -13,6 +13,8 @@ class CustomRegisterSerializer(RegisterSerializer):
     allow_blank=True,
     max_length=255
     )
+    first_name = serializers.CharField(required=False)
+    last_name = serializers.CharField(required=False)
     email = serializers.CharField(required=False)
     age = serializers.IntegerField(required=False)
     money = serializers.IntegerField(required=False)
@@ -22,6 +24,8 @@ class CustomRegisterSerializer(RegisterSerializer):
     def get_cleaned_data(self):
         return {
         'username': self.validated_data.get('username', ''),
+        'first_name': self.validated_data.get('first_name', ''),
+        'last_name': self.validated_data.get('last_name', ''),
         'password1': self.validated_data.get('password1', ''),
         'nickname': self.validated_data.get('nickname', ''),
         'email': self.validated_data.get('email', ''),

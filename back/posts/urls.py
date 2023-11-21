@@ -7,4 +7,5 @@ urlpatterns = [
     path('<int:post_pk>/', views.post_detail),
     path('comments/', views.comment_list),
     path('<int:post_pk>/comments/', views.comment_create),
+    path('comments/<int:comment_pk>/', views.comment_detail),
 ]
