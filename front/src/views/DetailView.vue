@@ -38,8 +38,6 @@
    store.getDetail(postId.value)
  })
  
-console.log(store.post.user)
-console.log(store.username)
 
  const goUpdate = function () {
    router.push({

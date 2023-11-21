@@ -3,6 +3,7 @@
         <h1>Exchange</h1>
         <div class="exchange">
             <select name="cur_nm" v-model="country_info" @change="clear">
+                <option :value=[]>나라를 선택하세요.</option>
                 <option v-for="country in store.exchange" :value="country">
                     {{ country.cur_nm }}
                 </option>

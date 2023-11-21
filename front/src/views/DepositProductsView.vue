@@ -3,7 +3,7 @@
         <h1>정기 예금</h1>
     </div>
     <select class="bank" v-model="bank">
-        <option value="" selected disable3d hidden>은행</option>
+        <option :value=null>은행을 선택하세요.</option>
         <option value="우리은행">우리은행</option>
         <option value="한국스탠다드차타드은행">한국스탠다드차타드은행</option>
         <option value="대구은행">대구은행</option>
@@ -23,6 +23,7 @@
 
     </select>
     <select class="duration" v-model="duration">
+        <option :value=null selected>기간을 선택하세요.</option>
         <option value="6">6개월</option>
         <option value="12">12개월</option>
         <option value="24">24개월</option>
