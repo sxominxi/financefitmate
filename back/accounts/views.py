@@ -7,13 +7,14 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User
+from .serializers import CustomRegisterSerializer
 
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def update_user_profile(request):
    user = request.user  # 현재 인증된 사용자
    data = request.data  # 업데이트할 사용자 정보
-
+   print(request.data)
    # 요청된 데이터로 사용자 정보 업데이트
    if 'username' in data:
       user.username = data['username']
@@ -34,5 +35,17 @@ def update_user_profile(request):
       user.salary = data['salary']
 
    user.save()  # 변경 사항 저장
+    # 변경된 사용자 정보 반환
+   serialized_user = {
+        'username': user.username,
+        'email': user.email,
+        'first_name': user.first_name,
+        'last_name': user.last_name,
+        'nickname': user.nickname,
+        'age': user.age,
+        'money': user.money,
+        'salary': user.salary
+    }
 
-   return Response({'message': '사용자 정보가 업데이트 되었습니다.'}, status=status.HTTP_200_OK)
+
+   return Response({'message': '사용자 정보가 업데이트 되었습니다.', 'user': serialized_user}, status=status.HTTP_200_OK)

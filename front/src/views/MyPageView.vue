@@ -1,7 +1,7 @@
 <template>
     <div>
       <h1>마이 페이지</h1>
-      <h2>{{ store.username }}님 반갑습니다.</h2>
+      <h2>{{ store.userInfo.first_name }}님 반갑습니다.</h2>
 
       <!-- 회원 정보 수정 페이지로 이동하는 버튼 -->
       <button @click="goToUpdateProfile">회원정보 수정</button>
@@ -77,7 +77,6 @@ deposits.value = JSON.parse(localStorage.getItem('become_deposit')) || []
 const installments = ref([])
 installments.value = JSON.parse(localStorage.getItem('become_installment')) || []
 
-
 const graph_x = ['평균 금리']
 const graph_y1 = [3.99]
 const graph_y2 = [3.99]
@@ -134,7 +133,8 @@ const goToUpdateProfile = () => {
 
 
 onMounted(() => {
-    getX()
+    getX(),
+    store.userFind()
 })
 
 </script>

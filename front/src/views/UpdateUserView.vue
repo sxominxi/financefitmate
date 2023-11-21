@@ -34,14 +34,13 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter()
 
-// const username = ref('')
-const email = ref('')
-const firstName = ref('')
-const lastName = ref('')
-const nickName = ref('')
-const age = ref(null)
-const money = ref(null)
-const salary = ref(null)
+const email = ref()
+const firstName = ref()
+const lastName = ref()
+const nickName = ref()
+const age = ref()
+const money = ref()
+const salary = ref()
 const store = useCounterStore()
 
 
@@ -51,11 +50,11 @@ const updateUserProfile = function () {
    method: 'put',
    url: `${store.API_URL}/account/update-profile/`,
      data: {
-      // username: username.value,
+      username: store.username,
       email: email.value, 
       first_name: firstName.value, 
       last_name: lastName.value, 
-      nickName: nickName.value, 
+      nickname: nickName.value, 
       age: age.value, 
       money: money.value, 
       salary: salary.value, 
@@ -65,7 +64,8 @@ const updateUserProfile = function () {
      }
   })
   .then((res) => {
-       store.logOut()
+      console.log(nickName.value)
+      console.log(res.data)
        router.push({ name: 'MyPageView' })
      })
      .catch((err) => {
