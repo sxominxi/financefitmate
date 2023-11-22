@@ -22,10 +22,12 @@
 <script setup>
 import { useRoute, useRouter } from 'vue-router'
 import { useServiceStore } from '../stores/modules/service'
+import { useCounterStore } from '../stores/modules/counter'
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 
 const store = useServiceStore()
+const store2 = useCounterStore()
 const route = useRoute()
 const deposit_id = ref(route.params.id)
 const existingProduct = JSON.parse(localStorage.getItem('become_deposit')) || []
@@ -34,18 +36,19 @@ const isOn = ref(true)
 
 onMounted(() => {
     store.getDetailDeposit(deposit_id.value)
+    store2.userFind()
 })
 
 const addProduct = (product, term) => {
     const isDuplicate = existingProduct.length > 0 && existingProduct.find((item) => item.id === product.id)
     if (!isDuplicate) {
         alert('현재 상품을 마이페이지에 추가합니다.')
-        existingProduct.push([product, term])
+        existingProduct.push([product, term, store2.userInfo])
         console.log(existingProduct)
         console.log(isOn.value)
     }
     localStorage.setItem('become_deposit', JSON.stringify(existingProduct))
-    isOn.value = existingProduct.length > 0 && existingProduct.find((item) => item.id === product.id)
+    isOn.value = existingProduct.length > 0 && existingProduct.find((item) => item.id === product.id && store2.userInfo.pk === existingProduct[2].pk)
 }
 
 </script>
