@@ -22,9 +22,6 @@
                     </div>
                     <hr>
                 </div>
-                <div v-else>
-                    <strong>가입한 정기 예금 상품이 없습니다.</strong>
-                </div>
             </div>
         </div>
         <hr>
@@ -43,9 +40,6 @@
                 </div>
                 <hr>
             </div>
-        </div>
-        <div v-else>
-            <strong>가입한 정기 적금 상품이 없습니다.</strong>
         </div>
         <hr>
             <h2>가입한 상품 금리</h2>
@@ -75,9 +69,6 @@ const router = useRouter()
 const deposits = ref([])
 deposits.value = JSON.parse(localStorage.getItem('become_deposit')) || []
 
-console.log(store.userInfo)
-
-
 const installments = ref([])
 installments.value = JSON.parse(localStorage.getItem('become_installment')) || []
 
@@ -93,6 +84,20 @@ const getX = function() {
                 if (y_nm.save_trm === x_nm[1]){
                     graph_y1.push(y_nm.intr_rate)
                     graph_y2.push(y_nm.intr_rate2)
+                }   
+            }
+        }
+    }
+}
+
+const getX2 = function() {
+    for (const x2_nm of installments.value) {
+        if (x2_nm[2].pk == store.userInfo.pk) {
+            graph_x.push(x2_nm[0].fin_prdt_nm.replace('\n',''))
+            for(const y2_nm of x2_nm[0].option_set) {
+                if (y2_nm.save_trm === x2_nm[1]){
+                    graph_y1.push(y2_nm.intr_rate)
+                    graph_y2.push(y2_nm.intr_rate2)
                 }   
             }
         }
@@ -140,6 +145,7 @@ const goToUpdateProfile = () => {
 
 onMounted(() => {
     getX(),
+    getX2(),
     store.userFind()
 })
 

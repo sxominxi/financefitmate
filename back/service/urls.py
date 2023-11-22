@@ -10,5 +10,6 @@ urlpatterns = [
     path('installment-savings-products/', views.installment_savings_products),
     path('installment-savings-products/<int:installment_pk>/', views.installment_detail),
     path('exchange/', views.exchange),
+    path('recommend-service/', views.recommend),
 
 ]

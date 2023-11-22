@@ -8,6 +8,8 @@ from .models import DepositProducts, InstallmentProducts
 import requests
 import json
 from django.http import JsonResponse
+from accounts.models import User
+from accounts.serializers import CustomReadSerializer
 
 api_key = 'f09a043ec54a3da97ecf32c4027e41b8'
 
@@ -174,3 +176,46 @@ def exchange(request):
     print(response)
     return JsonResponse(response, safe=False)
 
+# ---------------------------------------------------------------------------------------------
+
+# 상품 추천 서비스
+import numpy as np
+from sklearn.metrics.pairwise import euclidean_distances
+from collections import Counter
+
+@api_view(['GET'])
+def recommend(request):
+    user_data = User.objects.exclude(pk=request.user.pk).values('id', 'age', 'money', 'salary')
+    user_info = User.objects.get(pk=request.user.pk)
+
+    # 각 유저 간의 유사성 측정 (나이, 보유 자산, 연봉 기준) -> 3차원 그래프 형태로 변경 후 거리 계산 
+    user_similarity = {}
+    for data in user_data:
+        user_vector = np.array([data['age'], data['money'], data['salary']])
+        new_user_vector = np.array([user_info.age, user_info.money, user_info.salary])
+        distance = euclidean_distances([user_vector], [new_user_vector])[0][0]
+        user_similarity[data['id']] = distance
+
+    # 유사도를 기준으로 오름차순 정렬
+    sorted_users = sorted(user_similarity.items(), key=lambda x: x[1])
+
+    # 상위 10명의 유저를 선택
+    top_users = sorted_users[:10]
+
+    # 선택된 유저들의 상품 조회
+    recommended_products = []
+    for user_id, distance in top_users:
+        # 상품 리스트가 , 형태로 저장되어 있어서 split 을 통해 분해
+        user_products = User.objects.get(pk=user_id).financial_products.split(',')
+        recommended_products.extend(user_products)
+
+   # 각 상품의 등장 횟수를 계산
+    product_counter = Counter(recommended_products)
+
+    # 중복 상품을 제거하고 등장 횟수를 기준으로 내림차순으로 정렬
+    sorted_products = sorted(product_counter.items(), key=lambda x: x[1], reverse=True)
+
+    # 공백이 아닌 상품만 선택하여 추천 리스트로 만듦
+    recommended_products = [product for product, _ in sorted_products if product.strip()]
+
+    return Response(recommended_products)

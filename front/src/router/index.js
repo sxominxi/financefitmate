@@ -17,6 +17,7 @@ import SignUpView from '@/views/SignUpView.vue'
 import LogInView from '@/views/LogInView.vue'
 import UpdateView from '@/views/UpdateView.vue'
 import UpdateUserView from '@/views/UpdateUserView.vue'
+import RecommendView from '@/views/RecommendView.vue'
 
 
 const router = createRouter({
@@ -99,6 +100,11 @@ const router = createRouter({
       name: 'UpdateUserView',
       component: UpdateUserView
     },
+    {
+      path: '/service/recommends/',
+      name: 'RecommendView',
+      component: RecommendView
+    }
   ]
 })
 

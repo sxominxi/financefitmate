@@ -112,7 +112,6 @@ export const useCounterStore = defineStore('counter', () => {
     })
 
     .then((res) => {
-      console.log(res.data)
       userInfo.value = res.data
     })
     .catch((err) => {
@@ -135,5 +134,37 @@ export const useCounterStore = defineStore('counter', () => {
       })
   }
 
-  return { posts, API_URL, getPosts, signUp, logIn, token, isLogin, logOut, getComment, comments, getDetail, post, username, userInfo, userFind  }
+  const customProduct = ref([])
+    const recommendProducts = function() {
+        axios({
+            method: 'get',
+            url: `${API_URL}/service/recommend-service/`,
+            headers: {Authorization: `Token ${token.value}`}
+        })
+        .then((res) => {
+            customProduct.value = res.data
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }
+
+  return {  posts, 
+            API_URL, 
+            getPosts, 
+            signUp, 
+            logIn, 
+            token, 
+            isLogin, 
+            logOut, 
+            getComment, 
+            comments, 
+            getDetail, 
+            post, 
+            username, 
+            userInfo, 
+            userFind, 
+            customProduct,
+            recommendProducts  
+          }
 }, { persist: true })

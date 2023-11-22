@@ -15,6 +15,7 @@ const store = useCounterStore()
   <RouterLink :to="{ name: 'MyPageView' }">MyPage |</RouterLink>
 
   <RouterLink :to="{ name: 'PostView' }">Posts</RouterLink> |
+  <RouterLink :to="{ name: 'RecommendView' }">RecommendProducts</RouterLink>  |
   <nav v-if="store.isLogin">
     <form @submit.prevent="store.logOut">
       <input type="submit" value="logOut">
@@ -22,7 +23,7 @@ const store = useCounterStore()
   </nav>
   <nav v-else>
     <RouterLink :to="{ name: 'SignUpView' }">SignUp</RouterLink> |
-    <RouterLink :to="{ name: 'LogInView' }">LogIn</RouterLink>
+    <RouterLink :to="{ name: 'LogInView' }">LogIn</RouterLink>  |
   </nav>
 
   <RouterView />

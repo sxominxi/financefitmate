@@ -20,11 +20,10 @@
 </template>
 
 <script setup>
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 import { useServiceStore } from '../stores/modules/service'
 import { useCounterStore } from '../stores/modules/counter'
 import { ref, onMounted } from 'vue';
-import axios from 'axios';
 
 const store = useServiceStore()
 const store2 = useCounterStore()
@@ -44,8 +43,6 @@ const addProduct = (product, term) => {
     if (!isDuplicate) {
         alert('현재 상품을 마이페이지에 추가합니다.')
         existingProduct.push([product, term, store2.userInfo])
-        console.log(existingProduct)
-        console.log(isOn.value)
     }
     localStorage.setItem('become_deposit', JSON.stringify(existingProduct))
     isOn.value = existingProduct.length > 0 && existingProduct.find((item) => item.id === product.id && store2.userInfo.pk === existingProduct[2].pk)
