@@ -10,38 +10,29 @@
                            <br>
                            "어떤 상품을 찾으시나요?"
                         </h2>
-                        <img src="" alt="기본인사">
+                        <img class="investment" src="@/assets/investment.png" alt="기본인사">
                      </div>
 
                      <div class="comp_quick_list">
-                        <ul>
-                           <li>
-                              <a href="">
-                                 <strong>예금</strong>
-                                 <em>
-                                    "어쩌구"
-                                    <br>
-                                    "저쩌구"
-                                 </em>
-                                 <span class="">
-                                    <img src="" alt="">
-                                 </span>
+                        <div class="card-wrapper">
+                           <div class="card">
+                              <a href="#" class="card-content">
+                              <strong>예금</strong>
+                              <span class="card-image">
+                                 <img src="#" alt="">
+                              </span>
                               </a>
-                           </li>
-                           <li>
-                              <a href="">
-                                 <strong>적금</strong>
-                                 <em>
-                                    "어쩌구"
-                                    <br>
-                                    "저쩌구"
-                                 </em>
-                                 <span class="">
-                                    <img src="" alt="">
-                                 </span>
+                           </div>
+
+                           <div class="card">
+                              <a href="#" class="card-content">
+                              <strong>적금</strong>
+                              <span class="card-image">
+                                 <img src="#" alt="">
+                              </span>
                               </a>
-                           </li>
-                        </ul>
+                           </div>
+                        </div>
                         <div class="comp_login_out">
                            <div class="comp_login_area">
                               <h2>내가 가입한 금융 상품</h2>
@@ -104,12 +95,12 @@ const store = useCounterStore()
 </script>
 
 <style scoped>
+
 /* 전체 페이지를 감싸는 컨테이너 */
 #wrap {
   display: flex;
   justify-content: center;
-  background-color: #f0f0f0;
-  padding: 0px 50px; /* 기본값은 50px */
+  padding: 0px 100px; /* 기본값은 50px */
 }
 
 /* 페이지 내 컨텐츠를 감싸는 컨테이너 */
@@ -122,20 +113,20 @@ const store = useCounterStore()
 .direct_hi_header {
   background-color: #fff;
   padding: 20px 0;
-  width: 100%;
+  width: 80%;
   position: relative;
   overflow: hidden; /* 부모 요소의 내용이 넘칠 때 숨김 처리 */
 }
 
 /* 미디어 쿼리를 이용한 반응형 조정 */
-@media screen and (max-width: 600px) {
-  /* 현재 창 크기가 600px 이하인 경우 */
+@media screen and (max-width: 1000px) {
+  /* 현재 창 크기가 1000px 이하인 경우 */
   #wrap {
-    padding: 0 10px; /* 좁은 화면에서는 양 옆 공백을 줄입니다. */
+    padding: 0; /* 좁은 화면에서는 양 옆 공백을 줄입니다. */
   }
-
   .direct_hi_header {
     padding: 20px 0; /* 상하 여백은 필요에 따라 조절하세요 */
+    width: 100%;
   }
 }
 
@@ -207,6 +198,59 @@ const store = useCounterStore()
   cursor: pointer;
 }
 
-/* 그 외의 내용에 필요한 스타일링을 진행해주세요. */
+.top_quick_title {
+  font-size: 12px; /* 텍스트의 글꼴 크기 설정 */
+  border: 1px solid transparent; /* 기존 보더 초기화 */
+  position: relative; /* 상대 위치 설정 */
+  display: flex; /* Flexbox 사용 */
+  align-items: center; /* 수직 가운데 정렬 */
+}
+
+.top_quick_title::after {
+  position: absolute;
+  content: ''; /* 가상 요소를 생성하여 보더를 만듭니다. */
+  bottom: 0;
+  left: 0;
+  width: calc(100% - 100px); /* 텍스트 너비 계산 (이미지 너비 100px 감안) */
+}
+
+.top_quick_title h2 {
+  flex: 1; /* 텍스트가 남은 공간을 모두 차지하도록 설정 */
+  margin-right: 20px; /* 이미지와의 간격 설정 */
+}
+
+.top_quick_title img.investment {
+  max-width: 50px; /* 이미지의 최대 너비 설정 */
+  order: -1; /* 이미지를 텍스트 앞에 배치합니다. */
+  margin-right: 20px;
+  margin-left: 10px;
+}
+
+/* 예적금 카드 */
+.card-wrapper {
+  display: flex;
+  padding: 10px;
+}
+
+.card {
+  width: 150px; /* 카드 너비 조정 */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  box-sizing: border-box;
+  position: relative;
+  margin-bottom: 20px;
+  text-align: center;
+  margin-right: 20px;
+}
+
+.card-content {
+  text-decoration: none;
+  color: #333;
+}
+
+.card-content:hover {
+  background-color: #f9f9f9;
+}
 
 </style>

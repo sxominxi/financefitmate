@@ -119,8 +119,7 @@ const computedComments = computed(() => {
  #wrap {
   display: flex;
   justify-content: center;
-  background-color: #f0f0f0;
-  padding: 0px 50px; /* 기본값은 50px */
+  padding: 0px 100px; /* 기본값은 50px */
 }
 
 /* 페이지 내 컨텐츠를 감싸는 컨테이너 */
@@ -128,16 +127,19 @@ const computedComments = computed(() => {
 .check {
   background-color: #fff;
   padding: 20px 0;
-  width: 100%;
+  width: 80%;
   position: relative;
   overflow: hidden; /* 부모 요소의 내용이 넘칠 때 숨김 처리 */
 }
 
 /* 미디어 쿼리를 이용한 반응형 조정 */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1000px) {
   /* 현재 창 크기가 600px 이하인 경우 */
 #wrap {
-   padding: 0 10px; /* 좁은 화면에서는 양 옆 공백을 줄입니다. */
+   padding: 0; /* 좁은 화면에서는 양 옆 공백을 줄입니다. */
+   }
+.check{
+   width: 100%;
    }
 
 .deposit {
