@@ -1,33 +1,38 @@
 <template>
-    <div>
-        <h1>정기 적금</h1>
-    </div>
-    <select class="bank" v-model="bank">
-        <option :value=null>은행을 선택하세요.</option>
-        <option v-for="bank_select in bank_list" :value="bank_select">{{ bank_select }}</option>
-    </select>
+   <div id="wrap">
+      <div class="check">
+         <div class="inner">
 
-    <select class="duration" v-model="duration">
-        <option :value=null selected>기간을 선택하세요.</option>
-        <option v-for="duration_select in duration_list" :value="duration_select">{{ duration_select }}</option>
-    </select>
+            <h1>정기 적금</h1>
+         </div>
+         <select class="bank" v-model="bank">
+            <option :value=null>은행을 선택하세요.</option>
+            <option v-for="bank_select in bank_list" :value="bank_select">{{ bank_select }}</option>
+         </select>
 
-    <button @click="installment_list">검색</button>
-    <div v-for="product in find_installment" :key="product.id" @click="goDetail(product.id)">
-        <p>금융 회사: {{ product.kor_co_nm }}</p>
-        <p>금융 상품명: {{ product.fin_prdt_nm }}</p>
-        <div v-for="product_info in product.option_set" :key="product_info.id">
-            <div v-if="product_info.save_trm == duration">
-                <p>저축 기간: {{ product_info.save_trm }} 개월</p>
-                <p>저축 방식: {{ product_info.rsrv_type_nm }}</p>
-                <p>이자 계산 방식: {{ product_info.intr_rate_type_nm }}</p>
-                <p>최고 우대 금리: {{ product_info.intr_rate2 }}</p>
-                <button @click="goDetail(product.id)">자세히 보기</button>
-                <hr>
+         <select class="duration" v-model="duration">
+            <option :value=null selected>기간을 선택하세요.</option>
+            <option v-for="duration_select in duration_list" :value="duration_select">{{ duration_select }}</option>
+         </select>
+
+         <button @click="installment_list">검색</button>
+         <div v-for="product in find_installment" :key="product.id" @click="goDetail(product.id)">
+            <p>금융 회사: {{ product.kor_co_nm }}</p>
+            <p>금융 상품명: {{ product.fin_prdt_nm }}</p>
+            <div v-for="product_info in product.option_set" :key="product_info.id">
+                  <div v-if="product_info.save_trm == duration">
+                     <p>저축 기간: {{ product_info.save_trm }} 개월</p>
+                     <p>저축 방식: {{ product_info.rsrv_type_nm }}</p>
+                     <p>이자 계산 방식: {{ product_info.intr_rate_type_nm }}</p>
+                     <p>최고 우대 금리: {{ product_info.intr_rate2 }}</p>
+                     <button @click="goDetail(product.id)">자세히 보기</button>
+                     <hr>
+                  </div>
             </div>
-        </div>
-        <hr>
-    </div>
+            <hr>
+         </div>
+      </div>
+   </div>
 </template>
 
 <script setup>
@@ -73,5 +78,40 @@ const goDetail = function(installment_id) {
 </script>
 
 <style scoped>
+#wrap {
+  display: flex;
+  justify-content: center;
+  background-color: #f0f0f0;
+  padding: 0px 50px; /* 기본값은 50px */
+}
+
+/* 페이지 내 컨텐츠를 감싸는 컨테이너 */
+
+.check {
+  background-color: #fff;
+  padding: 20px 0;
+  width: 100%;
+  position: relative;
+  overflow: hidden; /* 부모 요소의 내용이 넘칠 때 숨김 처리 */
+}
+
+/* 미디어 쿼리를 이용한 반응형 조정 */
+@media screen and (max-width: 600px) {
+  /* 현재 창 크기가 600px 이하인 경우 */
+#wrap {
+   padding: 0 10px; /* 좁은 화면에서는 양 옆 공백을 줄입니다. */
+   }
+
+.deposit {
+   padding: 20px 0; /* 상하 여백은 필요에 따라 조절하세요 */
+  }
+}
+
+.inner {
+   border: 1px solid #ddd;
+   border-radius: 8px;
+   padding: 20px;
+   background-color: #fff;
+}
 
 </style>

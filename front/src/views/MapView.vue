@@ -1,42 +1,47 @@
 <template>
+   <div id="wrap">
+      <div class="check">
+         <div class="inner">
 
-    <h1>은행 찾아보기</h1>
-        <div class="box">
-            <p class="p">원하는 은행을 지도에서 검색해보세요!</p>
-            <div class="wrapper">
-                <div ref="container" class="first">
-                </div>
-                <div class="control-btns">
-                </div>
-            </div>
-            <div class="list">
+            <h1>은행 찾아보기</h1>
+               <div class="box">
+                     <p class="p">원하는 은행을 지도에서 검색해보세요!</p>
+                     <div class="wrapper">
+                        <div ref="container" class="first">
+                        </div>
+                        <div class="control-btns">
+                        </div>
+                     </div>
+                     <div class="list">
 
-                </div>
-            </div>
-        <div>
+                        </div>
+                     </div>
+               <div>
 
-        <title>주소로 장소 표시하기</title>
-        <select id="sido" v-model="select_area" @input="selected">
-           <option v-for="sido in Object.keys(area)">{{ sido }}</option>
-        </select>
-        <select id="sigugun" v-model="select_sido">
-           <option v-for="sigugun in list_city">{{ sigugun }}</option>
-        </select>
-        <select class="thi" v-model="bank">
-              <option value="" selected disable3d hidden>은행</option>
-              <option value="하나은행">하나은행</option>
-              <option value="국민은행">국민은행</option>
-              <option value="SC제일은행">SC제일은행</option>
-              <option value="신한은행">신한은행</option>
-              <option value="우리은행">우리은행</option>
-              <option value="외환은행">외환은행</option>
-              <option value="한국시티은행">한국시티은행</option>
-              <option value="기업은행">기업은행</option>
-              <option value="농협">농협</option>
-           </select>
-           <button @click="search">검색</button>
+               <title>주소로 장소 표시하기</title>
+               <select id="sido" v-model="select_area" @input="selected">
+                  <option v-for="sido in Object.keys(area)">{{ sido }}</option>
+               </select>
+               <select id="sigugun" v-model="select_sido">
+                  <option v-for="sigugun in list_city">{{ sigugun }}</option>
+               </select>
+               <select class="thi" v-model="bank">
+                     <option value="" selected disable3d hidden>은행</option>
+                     <option value="하나은행">하나은행</option>
+                     <option value="국민은행">국민은행</option>
+                     <option value="SC제일은행">SC제일은행</option>
+                     <option value="신한은행">신한은행</option>
+                     <option value="우리은행">우리은행</option>
+                     <option value="외환은행">외환은행</option>
+                     <option value="한국시티은행">한국시티은행</option>
+                     <option value="기업은행">기업은행</option>
+                     <option value="농협">농협</option>
+                  </select>
+                  <button @click="search">검색</button>
+               </div>
+         </div>
       </div>
-  
+   </div>
   </template>
    
   <script setup>
@@ -167,6 +172,41 @@
 
   </script>
   <style scoped >
+  #wrap {
+  display: flex;
+  justify-content: center;
+  background-color: #f0f0f0;
+  padding: 0px 50px; /* 기본값은 50px */
+}
+
+/* 페이지 내 컨텐츠를 감싸는 컨테이너 */
+
+.check {
+  background-color: #fff;
+  padding: 20px 0;
+  width: 100%;
+  position: relative;
+  overflow: hidden; /* 부모 요소의 내용이 넘칠 때 숨김 처리 */
+}
+
+/* 미디어 쿼리를 이용한 반응형 조정 */
+@media screen and (max-width: 600px) {
+  /* 현재 창 크기가 600px 이하인 경우 */
+#wrap {
+   padding: 0 10px; /* 좁은 화면에서는 양 옆 공백을 줄입니다. */
+   }
+
+.deposit {
+   padding: 20px 0; /* 상하 여백은 필요에 따라 조절하세요 */
+  }
+}
+
+.inner {
+   border: 1px solid #ddd;
+   border-radius: 8px;
+   padding: 20px;
+   background-color: #fff;
+}
   input{
     height: 50%;
     margin-top: 10px;
