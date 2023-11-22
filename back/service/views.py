@@ -218,3 +218,6 @@ def recommend(request):
     recommended_products = [product for product, _ in sorted_products if product.strip()]
 
     return Response(recommended_products)
+
+
+# ----------------------------------------------------------------------------------------------

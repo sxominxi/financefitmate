@@ -69,8 +69,6 @@ const updateUserProfile = function () {
      }
   })
   .then((res) => {
-      console.log(nickName.value)
-      console.log(res.data)
        router.push({ name: 'MyPageView' })
      })
      .catch((err) => {

@@ -19,6 +19,9 @@ import UpdateView from '@/views/UpdateView.vue'
 import UpdateUserView from '@/views/UpdateUserView.vue'
 import RecommendView from '@/views/RecommendView.vue'
 
+import MydepositView from '@/views/MydepositView.vue'
+import MyinstallmentView from '@/views/MyinstallmentView.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -104,7 +107,17 @@ const router = createRouter({
       path: '/service/recommends/',
       name: 'RecommendView',
       component: RecommendView
-    }
+    },
+    {
+      path: '/service/my-deposit/',
+      name: 'MydepositView',
+      component: MydepositView
+    },
+    {
+      path: '/service/my-installment/',
+      name: 'MyinstallmentView',
+      component: MyinstallmentView
+    },
   ]
 })
 
