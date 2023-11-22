@@ -5,15 +5,16 @@
             <div id="content" class="content">
                <div class="main_top_inner">
                   <div class="top_quick_list">
-                     <div class="top_quick_title">
-                        <h2>"고객님,"
-                           <br>
-                           "어떤 상품을 찾으시나요?"
-                        </h2>
-                        <img class="investment" src="@/assets/investment.png" alt="기본인사">
-                     </div>
-
                      <div class="comp_quick_list">
+                        <div class="top_quick_title">
+                           <h2>"고객님,"
+                              <br>
+                              "어떤 상품을 찾으시나요?"
+                           </h2>
+                           <img class="investment" src="@/assets/investment.png" alt="기본인사">
+                        </div>
+
+                     
                         <div class="card-wrapper">
                            <div class="card">
                               <a href="#" class="card-content">
@@ -32,15 +33,18 @@
                               </span>
                               </a>
                            </div>
+                        </div> 
+                     </div>
+
+                     <div class="comp_login_out">
+                        <div class="comp_login_area">
+                           <h2>내가 가입한 금융 상품</h2>
+                           <a href="">예금 |</a>
+                           <a href="">적금</a>
                         </div>
-                        <div class="comp_login_out">
-                           <div class="comp_login_area">
-                              <h2>내가 가입한 금융 상품</h2>
-                              <a href="">예금 |</a>
-                              <a href="">적금</a>
-                           </div>
-                        </div>
-                        <div>
+                     </div>
+                        
+                        <div class="comps">
                            <ul>
                               <li>
                               <a href="">
@@ -76,7 +80,7 @@
                               </li>
                            </ul>
                         </div>
-                     </div>
+                     
                   </div>
                </div>
             </div>
@@ -124,6 +128,7 @@ const store = useCounterStore()
   #wrap {
     padding: 0; /* 좁은 화면에서는 양 옆 공백을 줄입니다. */
   }
+
   .direct_hi_header {
     padding: 20px 0; /* 상하 여백은 필요에 따라 조절하세요 */
     width: 100%;
@@ -226,6 +231,21 @@ const store = useCounterStore()
   margin-left: 10px;
 }
 
+.comp_login_out {
+   border: 1px solid #ddd;
+   border-radius: 8px;
+}
+
+.comps{
+   border: 1px solid #ddd;
+   border-radius: 8px;
+}
+
+/* 고객님 어떤상품 */
+.comp_quick_list{
+   border: 1px solid #ddd;
+   border-radius: 8px;
+}
 /* 예적금 카드 */
 .card-wrapper {
   display: flex;
