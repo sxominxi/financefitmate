@@ -18,7 +18,6 @@ import LogInView from '@/views/LogInView.vue'
 import UpdateView from '@/views/UpdateView.vue'
 import UpdateUserView from '@/views/UpdateUserView.vue'
 
-import EditCommentView from '@/views/EditCommentView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -99,12 +98,6 @@ const router = createRouter({
       path: '/account/update-profile/',
       name: 'UpdateUserView',
       component: UpdateUserView
-    },
-
-    {
-      path: '/posts/:postId/comments/:commentId/edit',
-      name: 'EditCommentView',
-      component: EditCommentView
     },
   ]
 })
