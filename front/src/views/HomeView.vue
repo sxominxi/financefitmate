@@ -1,15 +1,15 @@
 <template>
    <div id="wrap">
-      <div id="header" class="direct_hi_header">
-         <div id="container" class="container">
+      <div id="header" class="check">
+         <div id="container" class="inner">
             <div id="content" class="content">
                <div class="main_top_inner">
                   <div class="top_quick_list">
                      <div class="comp_quick_list">
                         <div class="top_quick_title">
-                           <h2>"고객님,"
+                           <h2>고객님,
                               <br>
-                              "어떤 상품을 찾으시나요?"
+                              어떤 상품을 찾으시나요?
                            </h2>
                            <img class="investment" src="@/assets/investment.png" alt="기본인사">
                         </div>
@@ -17,71 +17,84 @@
                      
                         <div class="card-wrapper">
                            <div class="card">
-                              <a href="#" class="card-content">
-                              <strong>예금</strong>
-                              <span class="card-image">
-                                 <img src="#" alt="">
-                              </span>
-                              </a>
+                              <RouterLink :to="{ name: 'DepositProductsView' }" class="card-content"><strong>예금</strong></RouterLink>
                            </div>
 
                            <div class="card">
-                              <a href="#" class="card-content">
-                              <strong>적금</strong>
-                              <span class="card-image">
-                                 <img src="#" alt="">
-                              </span>
-                              </a>
+                              <RouterLink :to="{ name: 'InstallmentProductsView' }" class="card-content"><strong>적금</strong></RouterLink>
                            </div>
                         </div> 
                      </div>
 
-                     <div class="comp_login_out">
-                        <div class="comp_login_area">
+                     <div class="my_finance">
+                        <!-- <div class="top_quick_title">
                            <h2>내가 가입한 금융 상품</h2>
-                           <a href="">예금 |</a>
-                           <a href="">적금</a>
+                           <img class="investment" src="@/assets/target.png" alt="기본인사">
+                        </div> -->
+                        <div class="comp_quick_list2">
+                           <div class="divbox">
+                              <h2>내가 가입한 금융 상품</h2>
+                              <img class="investment" src="@/assets/target.png" alt="기본인사">
+                           </div>
+                              <div class="card3">
+                                 <div class="comp_quick_title">
+                                    <h2>내가 가입한 금융 상품</h2>
+                                    <div class="investment_div">d</div>
+                                 </div>
+
+                                 <div class="card-wrapper">
+                                    <div class="card2">
+                                       <RouterLink :to="{ name: 'DepositProductsView' }" class="card-content"><strong>예금</strong></RouterLink>
+                                    </div>
+
+                                    <div class="card2">
+                                       <RouterLink :to="{ name: 'DepositProductsView' }" class="card-content"><strong>예금</strong></RouterLink>
+                                    </div>
+                                 </div>
+                              </div>
+
                         </div>
                      </div>
+                  </div>
                         
                         <div class="comps">
                            <ul>
-                              <li>
-                              <a href="">
-                                 <strong>은행찾기</strong>
-                                 <span class="">
-                                    <img src="" alt="">
-                                 </span>
-                              </a>
+                              <li class="menu-item">
+                                 <RouterLink :to="{ name: 'MapView' }" class="menu-link">
+                                    <span class="menu-img">
+                                       <img src="@/assets/3d-map.png" alt="">
+                                    </span>
+                                    <strong class="comps_text">은행찾기</strong>
+                                 </RouterLink>
                               </li>
-                              <li>
-                              <a href="">
-                                 <strong>환율계산기</strong>
-                                 <span class="">
-                                    <img src="" alt="">
-                                 </span>
-                              </a>
+                              <li class="menu-item">
+                                 <RouterLink :to="{ name: 'ExchangeView' }" class="menu-link">
+                                    <span class="menu-img">
+                                       <img src="@/assets/calculator.png" alt="">
+                                    </span>
+                                    <strong class="comps_text">환율계산기</strong>
+                                 </RouterLink>
                               </li>
-                              <li>
-                              <a href="">
-                                 <strong>커뮤니티</strong>
-                                 <span class="">
-                                    <img src="" alt="">
-                                 </span>
-                              </a>
+                              <li class="menu-item">
+                                 <RouterLink :to="{ name: 'PostView' }" class="menu-link">
+                                    <span class="menu-img">
+                                       <img src="@/assets/newspaper.png" alt="">
+                                    </span>
+                                    <strong class="comps_text">금융꿀팁</strong>
+                                 </RouterLink>
                               </li>
-                              <li>
-                              <a href="">
-                                 <strong>마이페이지</strong>
-                                 <span class="">
-                                    <img src="" alt="">
-                                 </span>
-                              </a>
+                              <li class="menu-item">
+                                 <RouterLink :to="{ name: 'MyPageView' }" class="menu-link">
+                                    <span class="menu-img">
+                                       <img src="@/assets/google.png" alt="">
+                                    </span>
+                                    <strong class="comps_text">마이페이지</strong>
+                                 </RouterLink>
                               </li>
                            </ul>
                         </div>
                      
-                  </div>
+                  
                </div>
             </div>
          </div>
@@ -99,116 +112,26 @@ const store = useCounterStore()
 </script>
 
 <style scoped>
-
-/* 전체 페이지를 감싸는 컨테이너 */
-#wrap {
-  display: flex;
-  justify-content: center;
-  padding: 0px 100px; /* 기본값은 50px */
+/* 고객님과 가입금융상품 div */
+.top_quick_list {
+   display: flex;
 }
-
-/* 페이지 내 컨텐츠를 감싸는 컨테이너 */
-.content {
-  max-width: 100%;
-  width: 100%;
+/* 고객님, 어떤 상품을 찾으시나요 ? */
+.comp_quick_list{
+   border-radius: 8px;
+   width: 50%;
 }
-
-/* Header */
-.direct_hi_header {
-  background-color: #fff;
-  padding: 20px 0;
-  width: 80%;
-  position: relative;
-  overflow: hidden; /* 부모 요소의 내용이 넘칠 때 숨김 처리 */
-}
-
-/* 미디어 쿼리를 이용한 반응형 조정 */
-@media screen and (max-width: 1000px) {
-  /* 현재 창 크기가 1000px 이하인 경우 */
-  #wrap {
-    padding: 0; /* 좁은 화면에서는 양 옆 공백을 줄입니다. */
-  }
-
-  .direct_hi_header {
-    padding: 20px 0; /* 상하 여백은 필요에 따라 조절하세요 */
-    width: 100%;
-  }
-}
-
-/* Top Menu */
-.top_menu {
-  margin-bottom: 20px;
-}
-
-.top_menu_container {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 20px;
-}
-
-.top_menu_inner ul {
-  list-style: none;
-  padding: 0;
-}
-
-.top_menu_inner ul li {
-  display: inline-block;
-  margin-right: 10px;
-}
-
-/* Header Inner */
-.header_inner {
-  display: flex;
-  align-items: center;
-  margin: 20px;
-}
-
-.blind{
-   margin-right: 20px;
-}
-
-/* GNB */
-.gnb ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-}
-
-.gnb ul li {
-  margin-right: 15px;
-}
-
-/* Main Content */
-.main_top_inner {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 20px;
-  background-color: #fff;
-}
-
-.logout-form {
-  display: inline-block; /* 폼을 인라인 레벨로 변경하여 다른 컨텐츠와 나란히 위치하도록 설정합니다. */
-  margin-left: 0px; /* 버튼과의 간격 설정 */
-}
-
-/* 로그아웃 버튼 스타일 */
-.logout-btn {
-  padding: 6px 10px;
-  font-size: 16px;
-  border: none;
-  background-color: #fff;
-  color: #333;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
 .top_quick_title {
-  font-size: 12px; /* 텍스트의 글꼴 크기 설정 */
-  border: 1px solid transparent; /* 기존 보더 초기화 */
+  /* border: 1px solid transparent; 기존 보더 초기화 */
   position: relative; /* 상대 위치 설정 */
   display: flex; /* Flexbox 사용 */
   align-items: center; /* 수직 가운데 정렬 */
+}
+
+.top_quick_title h2 {
+  font-size: 20px; /* 텍스트의 글꼴 크기 설정 */
+  margin: 0;
+  line-height: 30px;
 }
 
 .top_quick_title::after {
@@ -216,61 +139,191 @@ const store = useCounterStore()
   content: ''; /* 가상 요소를 생성하여 보더를 만듭니다. */
   bottom: 0;
   left: 0;
-  width: calc(100% - 100px); /* 텍스트 너비 계산 (이미지 너비 100px 감안) */
-}
-
-.top_quick_title h2 {
-  flex: 1; /* 텍스트가 남은 공간을 모두 차지하도록 설정 */
-  margin-right: 20px; /* 이미지와의 간격 설정 */
+  /* width: calc(100% - 100px); 텍스트 너비 계산 (이미지 너비 100px 감안) */
 }
 
 .top_quick_title img.investment {
-  max-width: 50px; /* 이미지의 최대 너비 설정 */
+  max-width: 70px; /* 이미지의 최대 너비 설정 */
   order: -1; /* 이미지를 텍스트 앞에 배치합니다. */
-  margin-right: 20px;
+  margin-right: 10px;
   margin-left: 10px;
 }
 
-.comp_login_out {
-   border: 1px solid #ddd;
-   border-radius: 8px;
-}
-
-.comps{
-   border: 1px solid #ddd;
-   border-radius: 8px;
-}
-
-/* 고객님 어떤상품 */
-.comp_quick_list{
-   border: 1px solid #ddd;
-   border-radius: 8px;
-}
 /* 예적금 카드 */
 .card-wrapper {
   display: flex;
-  padding: 10px;
+  margin-top: 10px;
+  justify-content: space-around;
 }
 
 .card {
-  width: 150px; /* 카드 너비 조정 */
+  width: 45%; /* 카드 너비 조정 */
+  height: 150px;
   border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 10px;
   box-sizing: border-box;
   position: relative;
-  margin-bottom: 20px;
-  text-align: center;
-  margin-right: 20px;
+
 }
 
 .card-content {
-  text-decoration: none;
-  color: #333;
+   text-decoration: none;
+   color: #333;
+   width: 100%;
+   height: 100%;
+
 }
 
-.card-content:hover {
-  background-color: #f9f9f9;
+/* .card-content:hover {
+  background-color: red;
+} */
+
+/* 내가 가입한 금융상품 */
+.my_finance {
+   width: 50%;
+}
+.my_finance h2 {
+   font-size: 20px; /* 텍스트의 글꼴 크기 설정 */
+   margin: 0;
+}
+.my_finance img.investment {
+  max-width: 70px; /* 이미지의 최대 너비 설정 */
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.investment_div{
+   height: 60px;
+   visibility: hidden;
+}
+
+.comp_quick_title {
+  /* border: 1px solid transparent; 기존 보더 초기화 */
+  position: relative; /* 상대 위치 설정 */
+  display: flex; /* Flexbox 사용 */
+  align-items: center; /* 수직 가운데 정렬 */
+  margin-inline-start: 10px;
+}
+.card2 {
+   width: 45%; /* 카드 너비 조정 */
+  height: 75px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+  position: relative;
+  margin-bottom: 10px;
+}
+.card3 {
+   border: 1px solid #ddd;
+   border-radius: 8px;
+   margin: 3px;
+   width: 100%;
+}
+.divbox {
+  /* border: 1px solid transparent; 기존 보더 초기화 */
+  position: relative; /* 상대 위치 설정 */
+  display: flex; /* Flexbox 사용 */
+  align-items: center; /* 수직 가운데 정렬 */
+  visibility: hidden;
+}
+
+@media screen and (max-width: 1000px) {
+  .my_finance,
+  .comp_quick_list {
+    width: 100%; /* 모바일 화면일 때 가득 채우도록 설정 */
+    box-sizing: border-box; /* 내부 여백과 테두리를 포함한 전체 너비로 설정 */
+
+    margin-bottom: 50px; /* 아래 여백 추가 */
+  }
+  .top_quick_list {
+   display: inline;
+  }
+  .divbox{
+   display: none;
+  }
+  .card2 {
+   width: 45%; /* 카드 너비 조정 */
+  height: 150px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+  position: relative;
+}
+.my_finance img.investment {
+  max-width: 70px; /* 이미지의 최대 너비 설정 */
+  order: -1; /* 이미지를 텍스트 앞에 배치합니다. */
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.comp_quick_title {
+  /* border: 1px solid transparent; 기존 보더 초기화 */
+  position: relative; /* 상대 위치 설정 */
+  display: flex; /* Flexbox 사용 */
+  align-items: center; /* 수직 가운데 정렬 */
+}
+.comps ul {
+  list-style-type: none; /* 점 표시 없애기 */
+  padding: 20px;
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap; /* 요소들이 가로로 정렬되면서 넘치면 다음 줄로 이동 */
+  justify-content: center;
+}
+.card3 {
+   border-radius: 8px;
+   margin: 3px;
+   width: 100%;
+}
+}
+
+/* comp */
+
+.comps{
+   border-radius: 8px;
+}
+
+.comps ul {
+  list-style-type: none; /* 점 표시 없애기 */
+  padding: 20px;
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap; /* 요소들이 가로로 정렬되면서 넘치면 다음 줄로 이동 */
+  justify-content: center;
+}
+
+.comps ul li {
+  margin-bottom: 10px;
+  margin-right: 10px; /* 각 리스트 아이템 간의 간격 조정 */
+}
+
+.menu-link {
+  text-decoration: none; /* 링크 밑줄 제거 */
+  color: inherit; /* 기본 링크 색상 사용 */
+  font-weight: bold;
+  padding: 10px;
+}
+
+.comps img {
+   max-width: 70px; /* 이미지의 최대 너비 설정 */
+   order: -1; /* 이미지를 텍스트 앞에 배치합니다. */
+   margin-right: 10px;
+   margin-left: 10px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.menu-img {
+  max-width: 70px;
+}
+
+.comps_text {
+   text-align: center;
+   margin-bottom: 0;
+   display: block;
+   margin-top: 15px;
 }
 
 </style>

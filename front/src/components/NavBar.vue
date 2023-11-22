@@ -10,7 +10,6 @@
                         <RouterLink :to="{ name: 'MyPageView' }" class="menu-link1">마이페이지 |</RouterLink>
                         <template v-if="store.isLogin">
                            <form @submit.prevent="store.logOut" class="logout-form">
-                              <!-- 이 못생긴 로그아웃 버튼 어캐 해야됨 -->
                               <button type="submit" class="logout-btn">로그아웃</button> 
                            </form>
                         </template>
@@ -73,13 +72,7 @@ const store = useCounterStore()
 </script>
 
 <style scoped>
-#wrap {
-  display: flex;
-  justify-content: center;
-  padding: 0px 100px; /* 기본값은 50px */
-}
 
-/* Header */
 .direct_hi_header {
   background-color: #fff;
   padding: 20px 0;
@@ -91,10 +84,6 @@ const store = useCounterStore()
 /* 미디어 쿼리를 이용한 반응형 조정 */
 @media screen and (max-width: 1000px) {
   /* 현재 창 크기가 1000px 이하인 경우 */
-  #wrap {
-    padding: 0; /* 좁은 화면에서는 양 옆 공백을 줄입니다. */
-  }
-
   .direct_hi_header {
     padding: 20px 0; /* 상하 여백은 필요에 따라 조절하세요 */
   }
@@ -145,14 +134,6 @@ const store = useCounterStore()
 
 .gnb ul li {
   margin-right: 15px;
-}
-
-/* Main Content */
-.main_top_inner {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 20px;
-  background-color: #fff;
 }
 
 .logout-form {
