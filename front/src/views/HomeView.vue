@@ -326,4 +326,9 @@ const store = useCounterStore()
    margin-top: 15px;
 }
 
+.card-content strong {
+   margin-left: 20px;
+   margin-top: 10px;
+   display: block;
+}
 </style>
