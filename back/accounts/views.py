@@ -6,8 +6,8 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
-from django.contrib.auth.models import User
-from .serializers import CustomRegisterSerializer
+from .models import User
+from .serializers import CustomRegisterSerializer, CustomReadSerializer
 
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
@@ -49,3 +49,13 @@ def update_user_profile(request):
 
 
    return Response({'message': '사용자 정보가 업데이트 되었습니다.', 'user': serialized_user}, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def user_info(request, user_pk):
+   user =  User.objects.get(pk=user_pk)
+   print(user)
+   serializer = CustomReadSerializer(user)
+   return Response(serializer.data)
+   
