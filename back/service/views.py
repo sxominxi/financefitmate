@@ -207,9 +207,10 @@ def recommend(request):
     recommended_products = []
     for user_id, distance in top_users:
         # 상품 리스트가 , 형태로 저장되어 있어서 split 을 통해 분해
-        user_products = User.objects.get(pk=user_id).financial_products.split(',')
-        recommended_products.extend(user_products)
-
+        user_products = User.objects.get(pk=user_id).financial_products
+        if user_products:
+            user_products = user_products.split(',')
+            recommended_products.extend(user_products)
    # 각 상품의 등장 횟수를 계산
     product_counter = Counter(recommended_products)
 
@@ -223,3 +224,17 @@ def recommend(request):
 
 
 # ----------------------------------------------------------------------------------------------
+# 위치 정보 출력
+
+def map_info(request):
+    url = f'https://dapi.kakao.com/v2/local/search/keyword.json?query=KB국민은행ATM 조원주공APT단지상가'
+    headers = {
+        "Authorization": "8d2a6579e21785248893d93db12118c8"
+    }
+
+
+
+
+
+
+    pass

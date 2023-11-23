@@ -11,4 +11,5 @@ urlpatterns = [
     path('installment-savings-products/<int:installment_pk>/', views.installment_detail),
     path('exchange/', views.exchange),
     path('recommend-service/', views.recommend),
+    path('map/', views.map_info),
 ]
