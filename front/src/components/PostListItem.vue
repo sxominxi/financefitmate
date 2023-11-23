@@ -1,22 +1,58 @@
 <template>
-   <div>
-     <h5>{{ post.pk }}번째 게시글</h5>
-     <p>제목 :{{ post.title }}</p>
-     <p>내용 : {{ post.content }}</p>
-     <p>작성자 : {{ post.user }}</p>
-     <RouterLink :to="{ name: 'DetailView', params: { id: post.pk }}">
-       [Detail]
-     </RouterLink>
-     <hr>
+   <div class="card border-success">
+    <div class="card-main">
+      <div class="card-top">
+        <h5 class="card-title fs-4">제목: {{ post.title }}</h5>
+        <div class="card-side">
+          <p class="card-text1">작성자 : {{ post.user }}</p>
+          <h6 class="card-subtitle mb-2 text-body-secondary">{{ post.pk }}번째 게시글</h6>
+        </div>
+      </div>
+      <p class="card-text">내용 : {{ post.content }}</p>
+      <button class="btn btn-outline-success" @click="goComment(post.pk)">댓글 보기</button>
+    </div>
    </div>
  </template>
  
  <script setup>
  import { RouterLink } from 'vue-router'
+ import { useRouter } from 'vue-router';
+
+ const router = useRouter()
+
+ const goComment = function (post_id) {
+    router.push({
+          name: 'DetailView',
+          params: { id: post_id }
+      })
+ 
+ }
  
  defineProps({
    post: Object
  })
  </script>
  
- 
+<style scoped>
+.card {
+  margin: 20px 0;
+}
+.card-main {
+  margin: 20px;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-main h6 {
+  display: flex;
+  justify-content: end;
+}
+
+.card-main p {
+  margin-top: 30px;
+}
+
+</style>
