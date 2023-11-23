@@ -94,9 +94,8 @@ export const useCounterStore = defineStore('counter', () => {
       }
     })
       .then((res) => {
-        console.log(res.data)
         token.value = res.data.key
-        router.push({ name: 'PostView' })
+        router.push({ name: 'HomeView' })
       })
       .catch((err) => {
         console.log(err)

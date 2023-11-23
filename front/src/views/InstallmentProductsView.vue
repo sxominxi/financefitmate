@@ -3,13 +3,15 @@
       <div class="check">
          <div class="inner">
             <div class="title-box">
+               <div class="title-etc">
+                  <div class="border-3 border-bottom border-success">
+                  </div>
+               </div>
                <div class="title">
+                  
                   <div class="border border-3 border-bottom-0 border-success rounded-top">
                      <h1 class="fs-3 fw-bold"><strong>정기 적금</strong></h1>
                   </div>
-               </div>
-               <div class="title-etc">
-                  <div class="border-3 border-bottom border-success"></div>
                </div>
             </div>
          </div>
@@ -164,4 +166,7 @@ const goDetail = function(installment_id) {
     margin-top: 30px;
  }
  
+ .card:hover {
+    cursor: pointer;
+}
 </style>

@@ -271,7 +271,6 @@ const recommendDepoist = function() {
     }
 }
 
-console.log(DepositProduct.value)
 
 const InstallmentProduct = ref([])
 const recommendInstallment = function() {

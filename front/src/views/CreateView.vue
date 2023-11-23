@@ -12,17 +12,22 @@
                   <div class="border-3 border-bottom border-success"></div>
                </div>
             </div>
-         <form @submit.prevent="createPost">
-            <div>
-               <label for="title">제목:</label>
-               <input type="text" v-model.trim="title" id="title">
+            <div class="card-box">
+               <div class="card">
+                  <div class="card-body">
+                     <form @submit.prevent="createPost">
+                           <p class="card-title">제목:</p>
+                           <input class="form-control text-left" type="text" v-model.trim="title">
+                           <p class="card-title">내용:</p>
+                           <input class="form-control text-left" type="textarea" v-model="content">
+                           <br>
+                           <div class="card-button">
+                              <button class="btn btn-success">게시글 작성</button>
+                           </div>
+                     </form>
+                  </div>
+               </div>
             </div>
-            <div>
-               <label for="content">내용:</label>
-               <textarea v-model.trim="content" id="content"></textarea>
-            </div>
-            <input type="submit">
-         </form>
          </div>
       </div>
    </div>
@@ -65,5 +70,21 @@
  </script>
  
  <style scoped>
+
+.card {
+   margin-top: 40px;
+}
+
+.form-control {
+   width: 100%;
+   height: 300px;
+   margin-bottom: 30px;
+}
+
+.card-button {
+   display: flex;
+   justify-content: end;
+}
+
  </style>
  

@@ -1,58 +1,52 @@
 <template>
-   <div class="card border-success">
-    <div class="card-main">
-      <div class="card-top">
-        <h5 class="card-title fs-4">제목: {{ post.title }}</h5>
-        <div class="card-side">
-          <p class="card-text1">작성자 : {{ post.user }}</p>
-          <h6 class="card-subtitle mb-2 text-body-secondary">{{ post.pk }}번째 게시글</h6>
-        </div>
-      </div>
-      <p class="card-text">내용 : {{ post.content }}</p>
-      <button class="btn btn-outline-success" @click="goComment(post.pk)">댓글 보기</button>
-    </div>
+  <div class="card border-success" @click="goComment(post.pk)">
+   <div class="card-main">
+     <div class="card-top">
+       <h5 class="card-title fs-4"><strong>{{ post.title }}</strong></h5>
+       <div class="card-side">
+         <p class="card-text1">작성자 : {{ post.user }}</p>
+         <h6 class="card-subtitle mb-2 text-body-secondary">{{ post.pk }}번째 게시글</h6>
+       </div>
+     </div>
    </div>
- </template>
- 
- <script setup>
- import { RouterLink } from 'vue-router'
- import { useRouter } from 'vue-router';
+  </div>
+</template>
 
- const router = useRouter()
+<script setup>
+import { useRouter } from 'vue-router';
 
- const goComment = function (post_id) {
-    router.push({
-          name: 'DetailView',
-          params: { id: post_id }
-      })
- 
- }
- 
- defineProps({
-   post: Object
- })
- </script>
- 
+const router = useRouter()
+const goComment = function (post_id) {
+   router.push({
+         name: 'DetailView',
+         params: { id: post_id }
+     })
+}
+
+defineProps({
+  post: Object
+})
+</script>
+
 <style scoped>
 .card {
-  margin: 20px 0;
+ margin: 20px 0;
 }
 .card-main {
-  margin: 20px;
+ margin: 20px;
 }
 
 .card-top {
-  display: flex;
-  justify-content: space-between;
+ display: flex;
+ justify-content: space-between;
 }
 
 .card-main h6 {
-  display: flex;
-  justify-content: end;
+ display: flex;
+ justify-content: end;
 }
 
-.card-main p {
-  margin-top: 30px;
+.card:hover {
+   cursor: pointer;
 }
-
 </style>

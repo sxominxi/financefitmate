@@ -6,7 +6,7 @@
             <div class="title-box">
                <div class="title">
                   <div class="border border-3 border-bottom-0 border-success rounded-top">
-                     <h1>가입한 예금</h1>
+                     <h1>가입한 적금</h1>
                   </div>
                </div>
                <div class="title-etc">
@@ -16,6 +16,7 @@
              <hr>
              <div v-if="installments.length > 0">
                    <div v-for="product in installments">
+                    <div v-if="product[2].pk === store.userInfo.pk">
                       <h4>가입 상품: {{ product[0].fin_prdt_nm }}</h4>
                       <p>금융회사 명: {{ product[0].kor_co_nm }}</p>
                       <div v-for="option in product[0].option_set">
@@ -28,6 +29,7 @@
                       </div>
                       <hr>
                    </div>
+                </div>
              </div>
              <hr>
                    <h2>가입한 상품 금리</h2>

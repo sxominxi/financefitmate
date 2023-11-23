@@ -6,7 +6,7 @@
             <div class="title-box">
                <div class="title">
                   <div class="border border-3 border-bottom-0 border-success rounded-top">
-                     <h1>가입한 적금</h1>
+                     <h1>가입한 예금</h1>
                   </div>
                </div>
                <div class="title-etc">

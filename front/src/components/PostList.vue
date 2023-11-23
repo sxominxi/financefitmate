@@ -13,23 +13,21 @@
  </template>
  
  <script setup>
- import { useCounterStore } from '@/stores/modules/counter'
  import PostListItem from '@/components/PostListItem.vue'
  import { useRouter } from 'vue-router'
+ import { useCounterStore } from '../stores/modules/counter';
  
- const store = useCounterStore()
  const router = useRouter()
+ const store = useCounterStore()
 
  const createPost = function() {
-   router.push({ name: 'CreateView' }); 
+    router.push({ name: 'CreateView' }); 
  }
+
  </script>
 
 <style scoped>
-.create-button {
 
-
-}
 .top-box {
   margin: 30px 0; 
   display: flex;

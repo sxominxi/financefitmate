@@ -169,10 +169,12 @@ def installment_detail(request, installment_pk):
 # ---------------------------------------------------------------------------------------------
 
 # 환율 계산기
+@api_view(['GET'])
 def exchange(request):
     API_KEY = 'DBAH4dbneY14sHfaMcBHfx0eJ7AM8lkN'
     URL = f' https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey={API_KEY}&data=AP01'
     response = requests.get(URL).json()
+    print(response)
     return JsonResponse(response, safe=False)
 
 # ---------------------------------------------------------------------------------------------

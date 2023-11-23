@@ -16,11 +16,13 @@
                <div class="card-body">
                      <form @submit.prevent="update">
                         <p class="card-title">제목:</p>
-                        <input type="text" v-model="title">
+                        <input class="form-control text-left" type="text" v-model="title">
                         <p class="card-title">내용:</p>
-                        <input type="textarea" v-model="content">
+                        <input class="form-control text-left" type="textarea" v-model="content">
                         <br>
-                        <input type="submit" value="게시글 수정">
+                        <div class="card-button">
+                           <button class="btn btn-info">게시글 수정</button>
+                        </div>
                      </form>
                </div>
             </div>
@@ -83,4 +85,19 @@ const update = function () {
 </script>
 
 <style scoped>
+
+.card {
+   margin-top: 40px;
+}
+
+.form-control {
+   width: 100%;
+   height: 300px;
+   margin-bottom: 30px;
+}
+
+.card-button {
+   display: flex;
+   justify-content: end;
+}
 </style>

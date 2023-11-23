@@ -12,11 +12,21 @@
                   <div class="border-3 border-bottom border-success"></div>
                </div>
             </div>
-            <form @submit.prevent="logIn">
-               <input type="text" v-model.trim="username">
-               <input type="password" v-model.trim="password">
-               <input type="submit">
-            </form>
+            <div class="login-box">
+               <div class="form-tag">
+                  <form @submit.prevent="logIn">
+                     <div>
+                        <label for="id">아이디: </label>
+                        <input class="form-control" type="text" id="id" v-model.trim="username"><br>
+                        <label for="password">패스워드: </label>
+                        <input class="form-control" type="password" id="password" v-model.trim="password">
+                     </div>
+                     <div class="form-button">
+                        <button class="btn btn-success">로그인</button>
+                     </div>
+                  </form>
+               </div>
+            </div>
          </div>
       </div>
    </div>
@@ -40,4 +50,32 @@ const logIn = function () {
 </script>
 
 <style scoped>
+.form-tag {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   width: 30%;
+   height: 70%;
+   border: 1px solid #ddd;
+   border-radius: 15px;
+}
+
+.login-box {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   height: 600px;
+}
+
+.form-tag button {
+   text-align: center;
+   margin-top: 40px;
+}
+
+.form-button {
+   display: flex;
+   flex-direction: column;
+}
 </style>

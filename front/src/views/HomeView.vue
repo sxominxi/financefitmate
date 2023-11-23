@@ -5,13 +5,13 @@
 
                <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                   <div class="carousel-inner">
-                     <div class="carousel-item active">
+                     <div class="carousel-item active" @click="goRecommend">
                         <img src="@/assets/001.png" class="d-block w-100" alt="...">
                      </div>
-                     <div class="carousel-item">
+                     <div class="carousel-item" @click="goMap">
                         <img src="@/assets/002.png" class="d-block w-100" alt="...">
                      </div>
-                     <div class="carousel-item">
+                     <div class="carousel-item" @click="goDeposit">
                         <img src="@/assets/003.png" class="d-block w-100" alt="...">
                      </div>
                   </div>
@@ -151,6 +151,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import { useCounterStore } from '@/stores/modules/counter'
 import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { useRouter } from 'vue-router'
 
 import presentationImage from '@/assets/presentation.png'
 import bankImage from '@/assets/bank.png'
@@ -158,7 +159,7 @@ import routeImage from '@/assets/route.png'
 import moneybagImage from '@/assets/money-bag.png'
 
 const store = useCounterStore()
-
+const router = useRouter()
 const currentIndex = ref(0)
 const items = [
   { image: presentationImage, text: '금융상품 조회에 상품추천까지' },
@@ -168,6 +169,25 @@ const items = [
   { image: moneybagImage, text: 'financefitmate 만나고 부자되자' },
   // 다른 이미지 항목들
 ]
+
+const goDeposit = function( ) {
+   router.push({
+         name: 'DepositProductsView',
+     })
+}
+
+const goRecommend = function( ) {
+   router.push({
+         name: 'RecommendView',
+     })
+}
+
+const goMap = function( ) {
+   router.push({
+         name: 'MapView',
+     })
+}
+
 
 let interval
 
@@ -180,6 +200,8 @@ onMounted(() => {
 onBeforeUnmount(() => {
   clearInterval(interval)
 })
+
+
 
 </script>
 
@@ -257,7 +279,7 @@ onBeforeUnmount(() => {
 }
 
 .card:hover {
-  transform: translateY(-10px); /* 호버 시 카드 약간 위로 이동 */
+  transform: translateY(-5px); /* 호버 시 카드 약간 위로 이동 */
   box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 크게 */
   /* 추가적인 호버 효과 스타일링 */
 }
@@ -320,7 +342,7 @@ onBeforeUnmount(() => {
 }
 .card2:hover {
    border: 1px solid #ddd;
-  transform: translateY(-10px); /* 호버 시 카드 약간 위로 이동 */
+  transform: translateY(-5px); /* 호버 시 카드 약간 위로 이동 */
   box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 크게 */
   /* 추가적인 호버 효과 스타일링 */
 }
@@ -370,7 +392,7 @@ onBeforeUnmount(() => {
 }
 .card2:hover {
    border: 1px solid #ddd;
-  transform: translateY(-10px); /* 호버 시 카드 약간 위로 이동 */
+  transform: translateY(-5px); /* 호버 시 카드 약간 위로 이동 */
   box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 크게 */
   /* 추가적인 호버 효과 스타일링 */
 }
@@ -467,4 +489,7 @@ onBeforeUnmount(() => {
    margin-bottom: 70px;
 }
 
+.carousel:hover {
+    cursor: pointer;
+}
 </style>

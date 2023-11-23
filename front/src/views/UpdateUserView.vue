@@ -14,25 +14,53 @@
                </div>
             </div>
             <form @submit.prevent="updateUserProfile">
-               <label>이름: {{ store.username }}</label><br>
-               <!-- <input type="text" v-model="username"><br> -->
-               <label>이메일:</label>
-               <input type="email" v-model="email"><br>
-               <label>이름:</label>
-               <input type="text" v-model="firstName"><br>
-               <label>성:</label>
-               <input type="text" v-model="lastName"><br>
-
-               <label>닉네임:</label>
-               <input type="text" v-model="nickName"><br>
-               <label>나이:</label>
-               <input type="number" v-model="age"><br>
-               <label>현재 보유 자산:</label>
-               <input type="number" v-model="money"><br>
-               <label>연봉:</label>
-               <input type="number" v-model="salary"><br>
-               
-               <button type="submit">정보 업데이트</button>
+               <div class="form-box">
+                  <label class="id">아이디: {{ store.username }}</label><br>
+                  <div class="form-input">
+                     <div class="form-label">
+                        <label>이메일:</label>
+                     </div>
+                     <input class="form-control" type="email" v-model="email"><br>
+                  </div>
+                  <div class="form-input">
+                     <div class="form-label">
+                        <label>이름:</label>
+                     </div>
+                     <input class="form-control" type="text" v-model="firstName"><br>
+                  </div>
+                  <div class="form-input">
+                     <div class="form-label">
+                        <label>성:</label>
+                     </div>
+                     <input class="form-control" type="text" v-model="lastName"><br>
+                  </div>
+                  <div class="form-input">
+                     <div class="form-label">
+                        <label>닉네임:</label>
+                     </div>
+                     <input class="form-control" type="text" v-model="nickName"><br>
+                  </div>
+                  <div class="form-input">
+                     <div class="form-label">
+                        <label>나이:</label>
+                     </div>
+                     <input class="form-control" type="number" v-model="age"><br>
+                  </div>
+                  <div class="form-input">
+                     <div class="form-label">
+                        <label>현재 보유 자산:</label>
+                     </div>
+                     <input class="form-control" type="number" v-model="money"> <p class="input-p">원</p><br>
+                  </div>
+                  <div class="form-input">
+                     <div class="form-label">
+                        <label>연봉:</label>
+                     </div>
+                     <input class="form-control" type="number" v-model="salary"> <p class="input-p">원</p><br>
+                  </div>
+                  
+                  <button class="input-btn btn btn-success">정보 업데이트</button>
+               </div>
 
             </form>
          </div>
@@ -89,4 +117,37 @@ const updateUserProfile = function () {
 </script>
 
 <style scoped>
+.form-box {
+   margin-top: 40px;
+}
+
+.form-box input {
+   width: 60%;
+}
+
+.form-input {
+   display: flex;
+}
+
+.form-label {
+   width: 120px;
+}
+
+.form-control {
+   margin-top: 0px;
+   margin-bottom: 20px;
+}
+
+.id {
+   margin-bottom: 20px;
+}
+
+.input-p {
+   margin-top: 5px;
+   margin-left: 10px;
+}
+
+.input-btn {
+   margin-top: 20px;
+}
 </style>

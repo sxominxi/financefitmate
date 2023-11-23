@@ -15,7 +15,7 @@
             <div class="exchange">
                 <div class="uri-country">
                     <select class="form-select" aria-label="Disabled select example" disabled>
-                        <option selected value="한국 원">한국 원
+                        <option selected value="한국 원">한국 
                         </option>
                     </select>
                     <input class="uri-input border border-start-0" type="number" id="kr_won" @input="exchange_won" v-model="result_won"><br>

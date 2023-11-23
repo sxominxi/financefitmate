@@ -13,22 +13,29 @@
                </div>
             </div>
 
-            <h3 v-if="!isOn">마이페이지에 저장된 상품입니다.</h3>
-            <h3>{{ store.detailInstallment.fin_prdt_nm }}</h3>
-            <p>가입 대상: {{ store.detailInstallment.join_member }} </p>
-            <p>가입 방법: {{ store.detailInstallment.join_way }}</p>
-            <p>금융회사 명: {{ store.detailInstallment.kor_co_nm }}</p>
-            <hr>
-            <p>저축 기간 별 금리 정보</p>
-            <hr>
-            <div v-for="option in store.detailInstallment.option_set">
-                  <p>저축 기간: {{ option.save_trm }} 개월</p>
-                  <p>저축 금리 유형: {{ option.intr_rate_type_nm }}</p>
-                  <p>적립 유형명: {{ option.rsrv_type_nm }}</p>
-                  <p>저축 금리: {{ option.intr_rate }}</p>
-                  <p>최고 우대 금리: {{ option.intr_rate2 }}</p>
-                  <button v-if="isOn" @click="addProduct(store.detailInstallment, option.save_trm)">추가 하기</button>
-                  <hr>
+            <h3 class="togle-ment" v-if="!isOn"><strong>마이페이지에 저장된 상품입니다.</strong></h3>
+            <h3 class="product-name"><strong>{{ store.detailInstallment.fin_prdt_nm }}</strong></h3>
+            <div class="info-main">
+               <p class="fs-6">가입 대상: {{ store.detailInstallment.join_member }} </p>
+               <p class="fs-6">가입 방법: {{ store.detailInstallment.join_way }}</p>
+               <p class="fs-6">금융회사명: {{ store.detailInstallment.kor_co_nm }}</p>
+               <p class="fs-6">가입 방법: {{ store.detailInstallment.join_way }}</p>
+               <p class="fs-6">특이사항: {{ store.detailInstallment.spcl_cnd }}</p>
+               <hr>
+               <p class="fs-6">저축 기간 별 금리 정보</p>
+               <hr>
+            </div>
+            <div class="card-list">
+               <div v-for="option in store.detailInstallment.option_set">
+                  <div class="card border-success">
+                     <p class="card-header fs-3 fw-bold text-success">저축 기간: {{ option.save_trm }} 개월</p>
+                     <p class="card-text">저축 금리 유형: {{ option.intr_rate_type_nm }}</p>
+                     <p class="card-text">저축 금리: {{ option.intr_rate }}</p>
+                     <p class="card-text text-danger">최고 우대 금리: {{ option.intr_rate2 }}</p>
+                     <p class="card-text text-danger">적립 유형명: {{ option.rsrv_type_nm }}</p>
+                     <button class="card-button btn btn-success" v-if="isOn" @click="addProduct(store.detailInstallment, option.save_trm)">추가 하기</button>
+                  </div>
+               </div>
             </div>
          </div>
       </div>
@@ -65,4 +72,41 @@ const addProduct = (product, term) => {
 </script>
 
 <style scoped>
+.card-button {
+   width: 100px;
+   margin-bottom: 5px;
+}
+
+.card {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 280px;
+   margin: 30px 35px;
+   
+}
+.product-name{
+   margin-top: 30px;
+}
+.card-header {
+   width: 100%;
+}
+
+.card-list {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+
+hr {
+  color: green; 
+}
+
+.info-main {
+   margin: 40px 0;
+}
+
+.togle-ment {
+   margin-top: 30px;
+}
 </style>

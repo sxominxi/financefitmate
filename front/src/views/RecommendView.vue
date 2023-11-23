@@ -77,7 +77,6 @@ const recommendDepoist = function() {
 const InstallmentProduct = ref([])
 const recommendInstallment = function() {
     for (const item2 of store2.installmentproducts) {
-        console.log(item2)
         for (const recommenditem of store.customProduct) {
             if ( item2.fin_prdt_cd === recommenditem) {
                 InstallmentProduct.value.push(item2)
@@ -86,7 +85,6 @@ const recommendInstallment = function() {
     }
 }
 
-console.log(store2.installmentproducts)
 onMounted(() => {
     store.recommendProducts()
     store.userFind()
@@ -97,12 +95,6 @@ onMounted(() => {
 })
 
 
-onMounted(() => {
-    store.recommendProducts()
-    store.userFind()
-    store2.getDepositProducts()
-    store2.getInstallmentProducts()
-})
 </script>
 
 <style scoped>
