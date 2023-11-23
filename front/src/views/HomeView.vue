@@ -7,9 +7,10 @@
                   <div class="top_quick_list">
                      <div class="comp_quick_list">
                         <div class="top_quick_title">
-                           <h2>고객님,
+                           <h2><strong>고객님,
                               <br>
                               어떤 상품을 찾으시나요?
+                           </strong>
                            </h2>
                            <img class="investment" src="@/assets/investment.png" alt="기본인사">
                         </div>
@@ -18,37 +19,45 @@
                         <div class="card-wrapper">
                            <div class="card">
                               <RouterLink :to="{ name: 'DepositProductsView' }" class="card-content"><strong>예금</strong></RouterLink>
+                              <span class="card-hover">
+                                 <img src="@/assets/bauble.png" alt="" class="card-img">
+                              </span>
                            </div>
 
                            <div class="card">
                               <RouterLink :to="{ name: 'InstallmentProductsView' }" class="card-content"><strong>적금</strong></RouterLink>
+                              <span class="card-hover">
+                                 <img src="@/assets/reindeer.png" alt="" class="card-img">
+                              </span>
                            </div>
                         </div> 
                      </div>
 
                      <div class="my_finance">
-                        <!-- <div class="top_quick_title">
-                           <h2>내가 가입한 금융 상품</h2>
-                           <img class="investment" src="@/assets/target.png" alt="기본인사">
-                        </div> -->
                         <div class="comp_quick_list2">
-                           <div class="divbox">
+                           <div class="divbox"> <!-- 얘는 안보이는 박스임 -->
                               <h2>내가 가입한 금융 상품</h2>
                               <img class="investment" src="@/assets/target.png" alt="기본인사">
                            </div>
                               <div class="card3">
                                  <div class="comp_quick_title">
-                                    <h2>내가 가입한 금융 상품</h2>
+                                    <h2><strong>내가 가입한 금융 상품</strong></h2>
                                     <div class="investment_div">d</div>
                                  </div>
 
                                  <div class="card-wrapper">
                                     <div class="card2">
-                                       <RouterLink :to="{ name: 'DepositProductsView' }" class="card-content"><strong>예금</strong></RouterLink>
+                                       <RouterLink :to="{ name: 'MydepositView' }" class="card-content"><strong>예금</strong></RouterLink>
+                                       <span class="card-hover">
+                                          <img src="@/assets/snow-globe.png" alt="" class="card-img1">
+                                       </span>
                                     </div>
 
                                     <div class="card2">
-                                       <RouterLink :to="{ name: 'DepositProductsView' }" class="card-content"><strong>예금</strong></RouterLink>
+                                       <RouterLink :to="{ name: 'MyinstallmentView' }" class="card-content"><strong>적금</strong></RouterLink>
+                                       <span class="card-hover">
+                                          <img src="@/assets/mitten.png" alt="" class="card-img1">
+                                       </span>
                                     </div>
                                  </div>
                               </div>
@@ -118,14 +127,16 @@ const store = useCounterStore()
 }
 /* 고객님, 어떤 상품을 찾으시나요 ? */
 .comp_quick_list{
-   border-radius: 8px;
+   border-radius: 30px;
    width: 50%;
 }
+
 .top_quick_title {
-  /* border: 1px solid transparent; 기존 보더 초기화 */
+  /* border: 3px solid transparent; 기존 보더 초기화 */
   position: relative; /* 상대 위치 설정 */
   display: flex; /* Flexbox 사용 */
   align-items: center; /* 수직 가운데 정렬 */
+  padding-bottom: 20px;
 }
 
 .top_quick_title h2 {
@@ -147,23 +158,22 @@ const store = useCounterStore()
   order: -1; /* 이미지를 텍스트 앞에 배치합니다. */
   margin-right: 10px;
   margin-left: 10px;
+  padding-inline-start: 15px;
 }
 
 /* 예적금 카드 */
 .card-wrapper {
   display: flex;
-  margin-top: 10px;
   justify-content: space-around;
 }
 
 .card {
   width: 45%; /* 카드 너비 조정 */
   height: 150px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  border: 3px solid #198754;
+  border-radius: 30px;
   box-sizing: border-box;
   position: relative;
-
 }
 
 .card-content {
@@ -171,12 +181,31 @@ const store = useCounterStore()
    color: #333;
    width: 100%;
    height: 100%;
-
+   position: relative;
+   display: inline-block;
+   z-index: 2; /* card-hover 위로 올려주기 위한 z-index 설정 */
 }
 
-/* .card-content:hover {
-  background-color: red;
-} */
+.card-content > strong{
+   font-size: 20px;
+   padding: 25px;
+}
+.card-hover {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+}
+
+.card-content:hover + .card-hover {
+  display: block;
+}
+
+.card-content:hover {
+  border: none ; /* border 없애기 */
+}
 
 /* 내가 가입한 금융상품 */
 .my_finance {
@@ -197,36 +226,48 @@ const store = useCounterStore()
 }
 
 .comp_quick_title {
-  /* border: 1px solid transparent; 기존 보더 초기화 */
+  /* border: 3px solid transparent; 기존 보더 초기화 */
   position: relative; /* 상대 위치 설정 */
   display: flex; /* Flexbox 사용 */
   align-items: center; /* 수직 가운데 정렬 */
   margin-inline-start: 10px;
 }
+.comp_quick_title > h2 {
+  padding-inline-start: 10px;
+}
 .card2 {
    width: 45%; /* 카드 너비 조정 */
-  height: 75px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+   height: 75px;
+   border: 3px solid #198754;
+  border-radius: 30px;
   box-sizing: border-box;
   position: relative;
   margin-bottom: 10px;
 }
 .card3 {
-   border: 1px solid #ddd;
-   border-radius: 8px;
-   margin: 3px;
-   width: 100%;
+   border: 3px solid #198754;
+   border-radius: 30px;
+   width: 102%;
 }
+.card-img {
+   width: 100px;
+   justify-content: center;
+}
+.card-img1 {
+   width: 60px;
+   justify-content: center;
+}
+
 .divbox {
-  /* border: 1px solid transparent; 기존 보더 초기화 */
+  /* border: 3px solid transparent; 기존 보더 초기화 */
   position: relative; /* 상대 위치 설정 */
   display: flex; /* Flexbox 사용 */
   align-items: center; /* 수직 가운데 정렬 */
   visibility: hidden;
+  padding-bottom: 14.2px;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1260px) {
   .my_finance,
   .comp_quick_list {
     width: 100%; /* 모바일 화면일 때 가득 채우도록 설정 */
@@ -243,8 +284,8 @@ const store = useCounterStore()
   .card2 {
    width: 45%; /* 카드 너비 조정 */
   height: 150px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  border: 3px solid #198754;
+  border-radius: 30px;
   box-sizing: border-box;
   position: relative;
 }
@@ -255,7 +296,7 @@ const store = useCounterStore()
   margin-left: 10px;
 }
 .comp_quick_title {
-  /* border: 1px solid transparent; 기존 보더 초기화 */
+  /* border: 3px solid transparent; 기존 보더 초기화 */
   position: relative; /* 상대 위치 설정 */
   display: flex; /* Flexbox 사용 */
   align-items: center; /* 수직 가운데 정렬 */
@@ -269,16 +310,19 @@ const store = useCounterStore()
   justify-content: center;
 }
 .card3 {
-   border-radius: 8px;
-   margin: 3px;
-   width: 100%;
+   border-radius: 30px;
+   border: 3px solid white;
+}
+.card-img1 {
+   width: 100px;
+   justify-content: center;
 }
 }
 
 /* comp */
 
 .comps{
-   border-radius: 8px;
+   border-radius: 30px;
 }
 
 .comps ul {
@@ -331,4 +375,5 @@ const store = useCounterStore()
    margin-top: 10px;
    display: block;
 }
+
 </style>

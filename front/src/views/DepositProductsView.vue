@@ -2,8 +2,15 @@
    <div id="wrap">
       <div class="check">
          <div class="inner">
-            <div class="title border border-success">
-                <h1>정기 예금</h1>
+            <div class="title-box">
+               <div class="title">
+                  <div class="border border-3 border-bottom-0 border-success rounded-top">
+                     <h1>정기 예금</h1>
+                  </div>
+               </div>
+               <div class="title-etc">
+                  <div class="border-3 border-bottom border-success"></div>
+               </div>
             </div>
          </div>
          <div class="select-list">
@@ -43,7 +50,7 @@
             </div>
         </div>
         <div v-if="!isDeposit">
-            <h2>조회 가능한 상품이 없습니다.</h2>
+            <h2 class="not">조회 가능한 상품이 없습니다.</h2>
         </div>
       </div>
    </div>
@@ -99,6 +106,8 @@ const goDetail = function(deposit_id) {
    flex-direction: row;
    justify-content: left;
    align-items: center; /* 중앙 정렬을 위해 추가 */
+   padding-left: 20px;
+   padding-right: 20px;
  }
 
  .select-list select {
@@ -120,6 +129,12 @@ const goDetail = function(deposit_id) {
     display: flex;
     flex-direction: column;
     align-items: left;
+    padding-right: 20px;
+    padding-left: 30px;
+ }
+
+ .not {
+   padding-inline-start: 30px;
  }
 
  .card-main {
@@ -144,10 +159,37 @@ const goDetail = function(deposit_id) {
 
  .title {
     display: flex;
+    width: 50%;
+    height: 100%;
+    box-sizing: border-box; 
+ }
+
+ .title > div {
+    display: flex;
     align-items: center;
-    justify-content: start; 
+    justify-content: center; 
     width: 100%;
     height: 100%;
     box-sizing: border-box; 
+ }
+
+ .title > div > h1 {
+   padding-top: 15px;
+   font-size: 25px;
+ } 
+
+ .title-etc {
+   display: flex;
+   width: 50%;
+ }
+
+ .title-etc > div{
+   display: flex;
+   width: 100%;
+ }
+ 
+ .title-box {
+   display: flex;
+   justify-content: space-between;
  }
 </style>

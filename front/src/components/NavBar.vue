@@ -24,36 +24,34 @@
          </div>
          <!-- 로고와 nav bar -->
          <div class="header_inner">
-            <h1>
-               <a href="">
-                  <RouterLink :to="{ name: 'HomeView' }" class="blind">FinanceFitMate</RouterLink>
-               </a>
-            </h1>
+            <RouterLink :to="{ name: 'HomeView' }" class="blind">
+               <img src="@/assets/logo.png" alt="" class="blind-img">
+            </RouterLink>
             <div id="gnb" class="gnb">
                <ul>
                   <li class="is-on">
                      <!-- <a href="" title="금융상품조회">예금조회</a> -->
-                     <RouterLink :to="{ name: 'DepositProductsView' }" class="menu-link">예금조회</RouterLink>
+                     <RouterLink :to="{ name: 'DepositProductsView' }" class="menu-link"><strong>예금조회</strong></RouterLink>
                   </li>
                   <li class="is-on">
                      <!-- <a href="" title="금융상품조회">적금조회</a> -->
-                     <RouterLink :to="{ name: 'InstallmentProductsView' }" class="menu-link">적금조회</RouterLink>
+                     <RouterLink :to="{ name: 'InstallmentProductsView' }" class="menu-link"><strong>적금조회</strong></RouterLink>
                   </li>
                   <li class="is-on">
                      <!-- <a href="" title="은행찾기">은행찾기</a> -->
-                     <RouterLink :to="{ name: 'MapView' }" class="menu-link">은행찾기</RouterLink>
+                     <RouterLink :to="{ name: 'MapView' }" class="menu-link"><strong>은행찾기</strong></RouterLink>
                   </li>
                   <li class="is-on">
                      <!-- <a href="" title="환율계산기"></a> -->
-                     <RouterLink :to="{ name: 'ExchangeView' }" class="menu-link">환율계산기</RouterLink>
+                     <RouterLink :to="{ name: 'ExchangeView' }" class="menu-link"><strong>환율계산기</strong></RouterLink>
                   </li>
                   <li class="is-on">
                      <!-- <a href="" title="커뮤니티">커뮤니티</a> -->
-                     <RouterLink :to="{ name: 'PostView' }" class="menu-link">금융꿀팁</RouterLink>
+                     <RouterLink :to="{ name: 'PostView' }" class="menu-link"><strong>금융꿀팁</strong></RouterLink>
                   </li>
                   <li class="is-on">
                      <!-- <a href="" title="마이페이지">마이페이지</a> -->
-                     <RouterLink :to="{ name: 'MyPageView' }" class="menu-link">마이페이지</RouterLink>
+                     <RouterLink :to="{ name: 'MyPageView' }" class="menu-link"><strong>마이페이지</strong></RouterLink>
                   </li>
                </ul>
             </div>
@@ -72,6 +70,7 @@ const store = useCounterStore()
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
 
 .direct_hi_header {
   background-color: #fff;
@@ -82,7 +81,7 @@ const store = useCounterStore()
 }
 
 /* 미디어 쿼리를 이용한 반응형 조정 */
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1260px) {
   /* 현재 창 크기가 1000px 이하인 경우 */
   .direct_hi_header {
     padding: 20px 0; /* 상하 여백은 필요에 따라 조절하세요 */
@@ -99,6 +98,7 @@ const store = useCounterStore()
   top: 0;
   right: 0;
   margin: 20px;
+  margin-bottom: 50px;
 }
 
 .top_menu_inner ul {
@@ -116,12 +116,17 @@ const store = useCounterStore()
   display: flex;
   align-items: center;
   margin: 20px;
+  padding-top: 20px;
 }
 
 .blind{
    margin-right: 20px;
-   font-size: 25px;
-   color: #333;
+   text-decoration: none; /* 밑줄 제거 */
+}
+
+.blind > img {
+   width: 220px;
+   margin-bottom: 7px;
 }
 
 /* GNB */
