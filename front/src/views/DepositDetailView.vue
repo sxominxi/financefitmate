@@ -13,7 +13,7 @@
                </div>
             </div>
             <h3 class="togle-ment" v-if="!isOn"><strong>마이페이지에 저장된 상품입니다.</strong></h3>
-            <h3><strong>{{ store.detailDeposit.fin_prdt_nm }}</strong></h3>
+            <h3 class="product-name"><strong>{{ store.detailDeposit.fin_prdt_nm }}</strong></h3>
             <div class="info-main">
                <p class="fs-6">가입 대상: {{ store.detailDeposit.join_member }} </p>
                <p class="fs-6">가입 방법: {{ store.detailDeposit.join_way }}</p>
@@ -86,7 +86,9 @@ const addProduct = (product, term) => {
    margin: 30px 35px;
    
 }
-
+.product-name{
+   margin-top: 30px;
+}
 .card-header {
    width: 100%;
 }
@@ -106,6 +108,6 @@ hr {
 }
 
 .togle-ment {
-   margin-bottom: 20px;
+   margin-top: 30px;
 }
 </style>

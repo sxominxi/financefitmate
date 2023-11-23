@@ -5,7 +5,7 @@
             <div class="title-box">
                <div class="title">
                   <div class="border border-3 border-bottom-0 border-success rounded-top">
-                     <h1>정기 적금</h1>
+                     <h1 class="fs-3 fw-bold"><strong>정기 적금</strong></h1>
                   </div>
                </div>
                <div class="title-etc">
@@ -27,22 +27,32 @@
          <button @click="installment_list" type="button" class="btn btn-success">검색</button>
          </div>
 
-         <div v-for="product in find_installment" :key="product.id" @click="goDetail(product.id)">
-            <p>금융 회사: {{ product.kor_co_nm }}</p>
-            <p>금융 상품명: {{ product.fin_prdt_nm }}</p>
-            <div v-for="product_info in product.option_set" :key="product_info.id">
+         <div class="card-list" v-if="isInstallment">
+            <div class="card border-success mb-3 col-12" v-for="product in find_installment" :key="product.fin_prdt_cd" @click="goDetail(product.id)">
+               <div class="card-header">{{ product?.kor_co_nm }}</div>
+               <div v-for="product_info in product?.option_set" :key="product_info.id">
                   <div v-if="product_info.save_trm == duration">
-                     <p>저축 기간: {{ product_info.save_trm }} 개월</p>
-                     <p>저축 방식: {{ product_info.rsrv_type_nm }}</p>
-                     <p>이자 계산 방식: {{ product_info.intr_rate_type_nm }}</p>
-                     <p>최고 우대 금리: {{ product_info.intr_rate2 }}</p>
-                     <button @click="goDetail(product.id)">자세히 보기</button>
-                     <hr>
-                  </div>
+                        <div class="card-body" >
+                            <h5 class="card-title fs-3 fw-bold text-success">{{ product?.fin_prdt_nm }}</h5>
+                            <div class="card-function">
+                                <div class="card-main">
+                                    <div class="card-info">
+                                        <p class="card-text">저축 기간: {{ product_info.save_trm }} 개월</p>
+                                        <p class="card-text">이자 계산 방식: {{ product_info.intr_rate_type_nm }}</p>
+                                        <p class="card-text text-danger">적립 유형명: {{ product_info.rsrv_type_nm }}</p>
+                                    </div>
+                                </div>
+                                <div class="intr">
+                                    <p class="card-text text-danger">최고 우대 금리: {{ product_info.intr_rate2 }}</p>
+                                    <p class="card-text">기본 금리: {{ product_info.intr_rate }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
             </div>
-            <hr>
          </div>
-         <div v-if="!isDeposit">
+         <div v-if="!isInstallment">
             <h2 class="not">조회 가능한 상품이 없습니다.</h2>
         </div>
       </div>
@@ -60,6 +70,7 @@ const store = useServiceStore()
 const bank = ref(null)
 const duration = ref(null)
 const find_installment = ref([])
+const isInstallment = ref(false)
 
 const bank_list = ref(['우리은행', '한국스탠다드차타드은행', '대구은행', '부산은행', '광주은행', '부산은행', '제주은행', '제주은행', '전북은행', '경남은행', '한국산업은행', '국민은행', '신한은행', '농협은행주식회사', '하나은행', '주식회사 케이뱅크', '주식회사 카카오뱅크', '토스뱅크 주식회사'])
 const duration_list = ref([6, 12, 24, 36])
@@ -70,16 +81,21 @@ onMounted(() => {
 
 const installment_list = function() {
     find_installment.value = []
+    isInstallment.value = false
+    const filteredProducts = []
 
     for (const find_bank of store.installmentproducts) {
         if ( find_bank.kor_co_nm === bank.value) {
             for (const find_term of find_bank.option_set) {
                 if ( find_term.save_trm == duration.value ) {
-                    find_installment.value.push(find_bank)
+                    filteredProducts.push(find_bank)
                 }
             }
         }
-    }
+    } 
+
+    find_installment.value = [...filteredProducts]
+    isInstallment.value = find_installment.value.length > 0
 }
 
 const goDetail = function(installment_id) {
@@ -147,5 +163,5 @@ const goDetail = function(installment_id) {
     justify-content: space-between;
     margin-top: 30px;
  }
-
+ 
 </style>

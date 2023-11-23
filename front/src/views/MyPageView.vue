@@ -217,7 +217,6 @@ const recommendInstallment = function() {
     }
 }
 
-console.log(InstallmentProduct.value)
 
 onMounted(() => {
     userDetail()

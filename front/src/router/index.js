@@ -125,6 +125,10 @@ import { useCounterStore } from '@/stores/modules/counter'
 
 router.beforeEach((to, from) => {
   const store = useCounterStore()
+  if (to.name === 'MyPageView' && !store.isLogin) {
+    window.alert('로그인이 필요합니다.')
+    return { name: 'LogInView' }
+  }
   if (to.name === 'CreateView' && !store.isLogin) {
     window.alert('로그인이 필요합니다.')
     return { name: 'LogInView' }

@@ -5,7 +5,7 @@
             <div class="title-box">
                <div class="title">
                   <div class="border border-3 border-bottom-0 border-success rounded-top">
-                     <h1>정기 예금</h1>
+                     <h1 class="fs-3"><strong>정기 예금</strong></h1>
                   </div>
                </div>
                <div class="title-etc">
@@ -27,7 +27,7 @@
         </div>
         <div class="card-list" v-if="isDeposit">
             <div class="card border-success mb-3 col-12" v-for="product in find_deposit" :key="product.fin_prdt_cd" @click="goDetail(product.id)">
-                <div class="card-header">{{ product.kor_co_nm }}</div>
+                <div class="card-header">{{ product?.kor_co_nm }}</div>
                 <div v-for="product_info in product.option_set" :key="product_info.id">
                     <div v-if="product_info.save_trm == duration">
                         <div class="card-body" >

@@ -5,7 +5,7 @@
             <div class="title-box">
                <div class="title">
                   <div class="border border-3 border-bottom-0 border-success rounded-top">
-                     <h1>환율 계산기</h1>
+                     <h1 class="fs-3 fw-bold"><strong>환율 계산기</strong></h1>
                   </div>
                </div>
                <div class="title-etc">

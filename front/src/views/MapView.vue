@@ -6,7 +6,7 @@
             <div class="title-box">
                <div class="title">
                   <div class="border border-3 border-bottom-0 border-success rounded-top">
-                     <h1>은행 찾기</h1>
+                     <h1 class="fs-3 fw-bold"><strong>은행 찾기</strong></h1>
                   </div>
                </div>
                <div class="title-etc">

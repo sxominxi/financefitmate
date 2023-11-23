@@ -47,7 +47,7 @@
                   </li>
                   <li class="is-on">
                      <!-- <a href="" title="커뮤니티">커뮤니티</a> -->
-                     <RouterLink :to="{ name: 'PostView' }" class="menu-link"><strong>금융꿀팁</strong></RouterLink>
+                     <RouterLink :to="{ name: 'PostView' }" class="menu-link"><strong>커뮤니티</strong></RouterLink>
                   </li>
                   <li class="is-on">
                      <!-- <a href="" title="마이페이지">마이페이지</a> -->
