@@ -5,7 +5,7 @@
             <div class="title-box">
                <div class="title">
                   <div class="border border-3 border-bottom-0 border-success rounded-top">
-                     <h1>예금 상세 보기</h1>
+                     <h1><strong>예금 상세 보기</strong></h1>
                   </div>
                </div>
                <div class="title-etc">

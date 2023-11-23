@@ -6,38 +6,38 @@
             <div class="title-box">
                <div class="title">
                   <div class="border border-3 border-bottom-0 border-success rounded-top">
-                     <h1>가입한 예금</h1>
+                     <h1><strong>가입한 예금</strong></h1>
                   </div>
                </div>
                <div class="title-etc">
                   <div class="border-3 border-bottom border-success"></div>
                </div>
-            </div>
-                <div v-if="deposits.length > 0">
-                   <div v-for="product in deposits">
-                      <div v-if="product[2].pk === store.userInfo.pk">
-                         <h4>가입 상품: {{ product[0].fin_prdt_nm }}</h4>
-                         <p>금융회사 명: {{ product[0].kor_co_nm }}</p>
-                         <div v-for="option in product[0].option_set">
-                               <div v-if="option.save_trm === product[1]">
-                                  <p>기간: {{ option.save_trm }} 개월</p>
-                                  <p>저축 금리 유형: {{ option.intr_rate_type_nm }}</p>
-                                  <p>저축 금리: {{ option.intr_rate }}</p>
-                                  <p>최대 우대 금리: {{ option.intr_rate2 }}</p>
-                               </div>
-                         </div>
-                         <hr>
-                      </div>
-                   </div>
-             </div>
+            </div >
 
-                <h2>가입한 상품 금리</h2>
-             <div>
-                <button @click="createChart">내 상품 금리 정보 비교하기</button>
-                <div v-if="IsChart">
-                    <Bar :data="chartData" :options="chartOptions"/>
+            <div class="title-top" v-if="deposits.length > 0">
+                <div v-for="product in deposits">
+                    <div v-if="product[2].pk === store.userInfo.pk">
+                        <h3><strong>{{ product[0].fin_prdt_nm }}</strong></h3>
+                        <p class="product-name fs-6"> 금융회사 명: {{ product[0].kor_co_nm }}</p>
+                        <div v-for="option in product[0].option_set">
+                            <div v-if="option.save_trm === product[1]">
+                                <p>기간: {{ option.save_trm }} 개월</p>
+                                <p>저축 금리 유형: {{ option.intr_rate_type_nm }}</p>
+                                <p>저축 금리: {{ option.intr_rate }}</p>
+                                <p class="text-danger">최대 우대 금리: {{ option.intr_rate2 }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
                 </div>
-             </div>
+            </div>
+            <div class="chart">
+                <h2>가입한 상품 금리 정보 한 눈에 보기</h2>
+                <button class="btn btn-success" @click="createChart">내 상품 금리 정보 비교하기</button>
+            </div>
+            <div v-if="IsChart">
+                <Bar :data="chartData" :options="chartOptions"/>
+            </div>
 
           </div>
        </div>
@@ -90,12 +90,12 @@
      datasets: [
          {
          label: '저축 금리',
-         backgroundColor: '#f87979',
+         backgroundColor: '#5bc0de',
          data: graph_y1
          },
          {
          label: '최대 우대 금리',
-         backgroundColor: '#f15851',
+         backgroundColor: '#0275d8',
          data: graph_y2
          }
      ]
@@ -126,5 +126,28 @@
  </script>
  
  <style scoped>
- 
+ .title-top {
+    margin-top: 40px;
+ }
+
+ .product-name{
+   margin-top: 30px;
+}
+hr {
+  color: green; 
+}
+
+.info-main {
+   margin: 40px 0;
+}
+
+.togle-ment {
+   margin-top: 30px;
+}
+
+.chart {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+}
  </style>

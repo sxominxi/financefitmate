@@ -6,7 +6,7 @@
             <div class="title-box">
                <div class="title">
                   <div class="border border-3 border-bottom-0 border-success rounded-top">
-                     <h1>회원정보 수정</h1>
+                     <h1><strong>회원정보 수정</strong></h1>
                   </div>
                </div>
                <div class="title-etc">
