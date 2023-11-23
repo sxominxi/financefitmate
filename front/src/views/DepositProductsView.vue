@@ -156,40 +156,4 @@ const goDetail = function(deposit_id) {
     justify-content: space-between;
     margin-top: 30px;
  }
-
- .title {
-    display: flex;
-    width: 50%;
-    height: 100%;
-    box-sizing: border-box; 
- }
-
- .title > div {
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box; 
- }
-
- .title > div > h1 {
-   padding-top: 15px;
-   font-size: 25px;
- } 
-
- .title-etc {
-   display: flex;
-   width: 50%;
- }
-
- .title-etc > div{
-   display: flex;
-   width: 100%;
- }
- 
- .title-box {
-   display: flex;
-   justify-content: space-between;
- }
 </style>

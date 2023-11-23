@@ -3,7 +3,16 @@
       <div class="check">
          <div class="inner">
 
-            <h1>사용자 정보 수정</h1>
+            <div class="title-box">
+               <div class="title">
+                  <div class="border border-3 border-bottom-0 border-success rounded-top">
+                     <h1>회원정보 수정</h1>
+                  </div>
+               </div>
+               <div class="title-etc">
+                  <div class="border-3 border-bottom border-success"></div>
+               </div>
+            </div>
             <form @submit.prevent="updateUserProfile">
                <label>이름: {{ store.username }}</label><br>
                <!-- <input type="text" v-model="username"><br> -->

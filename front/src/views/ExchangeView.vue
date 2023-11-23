@@ -2,8 +2,16 @@
    <div id="wrap">
       <div class="check">
          <div class="inner">
-
-            <h1>환율 계산기</h1>
+            <div class="title-box">
+               <div class="title">
+                  <div class="border border-3 border-bottom-0 border-success rounded-top">
+                     <h1>환율 계산기</h1>
+                  </div>
+               </div>
+               <div class="title-etc">
+                  <div class="border-3 border-bottom border-success"></div>
+               </div>
+            </div>
             <div class="exchange">
                 <div class="uri-country">
                     <select class="form-select" aria-label="Disabled select example" disabled>

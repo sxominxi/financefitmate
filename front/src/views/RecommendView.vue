@@ -2,7 +2,16 @@
    <div id="wrap">
       <div class="check">
          <div class="inner">
-            <h1>상품 추천 리스트</h1>
+            <div class="title-box">
+               <div class="title">
+                  <div class="border border-3 border-bottom-0 border-success rounded-top">
+                     <h1>금융 상품 추천</h1>
+                  </div>
+               </div>
+               <div class="title-etc">
+                  <div class="border-3 border-bottom border-success"></div>
+               </div>
+            </div>
             <h2>예금 상품 추천</h2>
             <div v-for="product in store2.depositproducts">
                   <div v-for="recommends in store.customProduct">

@@ -2,8 +2,16 @@
    <div id="wrap">
       <div class="check">
          <div class="inner">
-
-            <h1>Login</h1>
+            <div class="title-box">
+               <div class="title">
+                  <div class="border border-3 border-bottom-0 border-success rounded-top">
+                     <h1>로그인</h1>
+                  </div>
+               </div>
+               <div class="title-etc">
+                  <div class="border-3 border-bottom border-success"></div>
+               </div>
+            </div>
             <form @submit.prevent="logIn">
                <input type="text" v-model.trim="username">
                <input type="password" v-model.trim="password">

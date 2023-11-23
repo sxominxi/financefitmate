@@ -2,7 +2,16 @@
    <div id="wrap">
       <div class="check">
          <div class="inner">
-            <h1>마이 페이지</h1>
+            <div class="title-box">
+               <div class="title">
+                  <div class="border border-3 border-bottom-0 border-success rounded-top">
+                     <h1>마이 페이지</h1>
+                  </div>
+               </div>
+               <div class="title-etc">
+                  <div class="border-3 border-bottom border-success"></div>
+               </div>
+            </div>
             <div class="box">
                 <div class="my-info card border-light mb-3">
                     <h2><strong>{{ userDetailInfo.first_name }}</strong> 님</h2>

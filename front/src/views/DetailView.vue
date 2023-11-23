@@ -2,7 +2,16 @@
    <div id="wrap">
       <div class="check">
          <div class="inner">
-            <h1>Detail</h1>
+            <div class="title-box">
+               <div class="title">
+                  <div class="border border-3 border-bottom-0 border-success rounded-top">
+                     <h1>게시글 상세 조회</h1>
+                  </div>
+               </div>
+               <div class="title-etc">
+                  <div class="border-3 border-bottom border-success"></div>
+               </div>
+            </div>
             <div v-if="store.post">
                <p>제목 : {{ store.post.title }}</p>
                <p>내용 : {{ store.post.content }}</p>

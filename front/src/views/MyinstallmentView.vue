@@ -3,7 +3,16 @@
        <div class="check">
           <div class="inner">
  
-             <h1>가입한 정기 적금 상품</h1> 
+            <div class="title-box">
+               <div class="title">
+                  <div class="border border-3 border-bottom-0 border-success rounded-top">
+                     <h1>가입한 예금</h1>
+                  </div>
+               </div>
+               <div class="title-etc">
+                  <div class="border-3 border-bottom border-success"></div>
+               </div>
+            </div> 
              <hr>
              <div v-if="installments.length > 0">
                    <div v-for="product in installments">

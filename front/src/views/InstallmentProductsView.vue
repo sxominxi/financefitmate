@@ -2,20 +2,31 @@
    <div id="wrap">
       <div class="check">
          <div class="inner">
-
-            <h1>정기 적금</h1>
+            <div class="title-box">
+               <div class="title">
+                  <div class="border border-3 border-bottom-0 border-success rounded-top">
+                     <h1>정기 적금</h1>
+                  </div>
+               </div>
+               <div class="title-etc">
+                  <div class="border-3 border-bottom border-success"></div>
+               </div>
+            </div>
          </div>
-         <select class="bank" v-model="bank">
-            <option :value=null>은행을 선택하세요.</option>
-            <option v-for="bank_select in bank_list" :value="bank_select">{{ bank_select }}</option>
-         </select>
+         <div class="select-list">
+            <select class="bank form-select" v-model="bank" aria-label="Default select example">
+                <option :value=null>은행을 선택하세요.</option>
+                <option v-for="bank_select in bank_list" :value="bank_select">{{ bank_select }}</option>
+            </select>
 
-         <select class="duration" v-model="duration">
-            <option :value=null selected>기간을 선택하세요.</option>
-            <option v-for="duration_select in duration_list" :value="duration_select">{{ duration_select }}</option>
-         </select>
+            <select class="duration form-select" v-model="duration" aria-label="Default select example">
+                <option :value=null selected>기간을 선택하세요.</option>
+                <option v-for="duration_select in duration_list" :value="duration_select">{{ duration_select }}</option>
+            </select>
 
-         <button @click="installment_list">검색</button>
+         <button @click="installment_list" type="button" class="btn btn-success">검색</button>
+         </div>
+
          <div v-for="product in find_installment" :key="product.id" @click="goDetail(product.id)">
             <p>금융 회사: {{ product.kor_co_nm }}</p>
             <p>금융 상품명: {{ product.fin_prdt_nm }}</p>
@@ -31,6 +42,9 @@
             </div>
             <hr>
          </div>
+         <div v-if="!isDeposit">
+            <h2 class="not">조회 가능한 상품이 없습니다.</h2>
+        </div>
       </div>
    </div>
 </template>
@@ -78,5 +92,60 @@ const goDetail = function(installment_id) {
 </script>
 
 <style scoped>
+.select-list {
+   display: flex;
+   flex-direction: row;
+   justify-content: left;
+   align-items: center; /* 중앙 정렬을 위해 추가 */
+   padding-left: 20px;
+   padding-right: 20px;
+ }
+
+ .select-list select {
+   width: 200px;
+   height: 50px;
+   margin: 30px 10px;
+ }
+
+ .select-list > button {
+   width: 80px;
+   height: 48px; /* 선택한 높이에 맞게 조절 */
+   margin: 30px 10px; /* 간격 조절 */
+ }
+
+ .card {
+    width: 99%;
+ }
+ .card-list{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding-right: 20px;
+    padding-left: 30px;
+ }
+
+ .not {
+   padding-inline-start: 30px;
+ }
+
+ .card-main {
+    display: flex;
+    justify-content: space-between;
+ }
+
+ .card-text {
+    margin: 0 0;
+ }
+ .intr {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+ }
+
+ .card-function {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+ }
 
 </style>

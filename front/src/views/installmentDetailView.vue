@@ -2,6 +2,16 @@
    <div id="wrap">
       <div class="check">
          <div class="inner">
+            <div class="title-box">
+               <div class="title">
+                  <div class="border border-3 border-bottom-0 border-success rounded-top">
+                     <h1>적금 상세 보기</h1>
+                  </div>
+               </div>
+               <div class="title-etc">
+                  <div class="border-3 border-bottom border-success"></div>
+               </div>
+            </div>
 
             <h3 v-if="!isOn">마이페이지에 저장된 상품입니다.</h3>
             <h3>{{ store.detailInstallment.fin_prdt_nm }}</h3>

@@ -3,7 +3,16 @@
      <div class="check">
         <div class="inner">
           <div class="box">
-            <h1>은행 찾아보기</h1>
+            <div class="title-box">
+               <div class="title">
+                  <div class="border border-3 border-bottom-0 border-success rounded-top">
+                     <h1>은행 찾기</h1>
+                  </div>
+               </div>
+               <div class="title-etc">
+                  <div class="border-3 border-bottom border-success"></div>
+               </div>
+            </div>
             <div class="select-list">
               <title>주소로 장소 표시하기</title>
               <select id="sido" v-model="select_area" @input="selected" class="form-select" aria-label="Default select example">
