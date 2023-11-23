@@ -49,16 +49,17 @@
                      <!-- <a href="" title="커뮤니티">커뮤니티</a> -->
                      <RouterLink :to="{ name: 'PostView' }" class="menu-link"><strong>커뮤니티</strong></RouterLink>
                   </li>
-                  <li class="is-on">
+                  <!-- <li class="is-on"> -->
                      <!-- <a href="" title="마이페이지">마이페이지</a> -->
-                     <RouterLink :to="{ name: 'MyPageView' }" class="menu-link"><strong>마이페이지</strong></RouterLink>
-                  </li>
+                     <!-- <RouterLink :to="{ name: 'MyPageView' }" class="menu-link"><strong>마이페이지</strong></RouterLink> -->
+                  <!-- </li> -->
                </ul>
             </div>
          </div>
       </div>
    </div>
-   <RouterLink :to="{ name: 'RecommendView' }">RecommendProducts</RouterLink>
+   
+   
 </template>
 
 <script setup>
@@ -71,6 +72,7 @@ const store = useCounterStore()
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+
 
 .direct_hi_header {
   background-color: #fff;

@@ -2,6 +2,13 @@
    <div id="wrap">
       <div id="header" class="check">
          <div id="container" class="inner">
+               <div class="main-img">
+                  <div v-for="(item, index) in items" :key="index" :class="{ active: currentIndex === index }">
+                     <img :src="item.image" alt="">
+                     <strong>{{ item.text }}</strong>
+                  </div>
+               </div>
+
             <div id="content" class="content">
                <div class="main_top_inner">
                   <div class="top_quick_list">
@@ -100,6 +107,14 @@
                                     <strong class="comps_text">마이페이지</strong>
                                  </RouterLink>
                               </li>
+                              <li class="menu-item">
+                                 <RouterLink :to="{ name: 'RecommendView' }" class="menu-link">
+                                    <span class="menu-img">
+                                       <img src="@/assets/folder.png" alt="">
+                                    </span>
+                                    <strong class="comps_text">금융상품추천</strong>
+                                 </RouterLink>
+                              </li>
                            </ul>
                         </div>
                      
@@ -114,13 +129,78 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import { useCounterStore } from '@/stores/modules/counter'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+
+import presentationImage from '@/assets/presentation.png'
+import bankImage from '@/assets/bank.png'
+import routeImage from '@/assets/route.png'
+import moneybagImage from '@/assets/money-bag.png'
 
 const store = useCounterStore()
 
+const currentIndex = ref(0)
+const items = [
+  { image: presentationImage, text: '금융상품 조회에 상품추천까지' },
+  { image: bankImage, text: '오늘의 환율 정보' },
+  { image: routeImage, text: '가까운 은행 찾기' },
+  { image: bankImage, text: '커뮤니티' },
+  { image: moneybagImage, text: 'financefitmate 만나고 부자되자' },
+  // 다른 이미지 항목들
+]
+
+let interval
+
+onMounted(() => {
+  interval = setInterval(() => {
+    currentIndex.value = (currentIndex.value + 1) % items.length
+  }, 3000)
+})
+
+onBeforeUnmount(() => {
+  clearInterval(interval)
+})
 
 </script>
 
 <style scoped>
+.main-img {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* 요소들을 세로 중앙 정렬하기 위해 추가 */
+  width: 1000px; /* 가로 크기 조절 */
+  height: 330px; /* 세로 크기 조절 */
+  margin: 0 auto; /* 중앙 정렬을 위한 margin 설정 */
+}
+
+.main-img img {
+   max-width: 40%; /* 이미지 너비 조정 */
+  max-height: 100%; /* 이미지 높이 조정 */
+  order: 2; /* 이미지를 맨 뒤로 배치 */
+  padding-bottom: 100px;
+}
+
+.main-img strong {
+  /* display: block;
+  text-align: right;
+  margin-top: 10px;
+  font-weight: bold; */
+  max-width: 50%; /* 텍스트 너비 조정 */
+  order: 1; /* 텍스트를 맨 앞으로 배치 */
+  text-align: left; /* 텍스트를 왼쪽 정렬 */
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.main-img div {
+  display: none;
+  transition: opacity 1s ease-in-out;
+}
+
+.main-img div.active {
+  display: block;
+  opacity: 1;
+}
+
 /* 고객님과 가입금융상품 div */
 .top_quick_list {
    display: flex;
@@ -170,8 +250,9 @@ const store = useCounterStore()
 .card {
   width: 45%; /* 카드 너비 조정 */
   height: 150px;
-  border: 3px solid #198754;
-  border-radius: 30px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px 0px #198754;
+  padding: 10px;
   box-sizing: border-box;
   position: relative;
 }
@@ -188,7 +269,7 @@ const store = useCounterStore()
 
 .card-content > strong{
    font-size: 20px;
-   padding: 25px;
+   /* padding: 25px; */
 }
 .card-hover {
   display: none;
@@ -238,16 +319,18 @@ const store = useCounterStore()
 .card2 {
    width: 45%; /* 카드 너비 조정 */
    height: 75px;
-   border: 3px solid #198754;
-  border-radius: 30px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px 0px #198754;
+  padding: 10px;
   box-sizing: border-box;
   position: relative;
   margin-bottom: 10px;
 }
 .card3 {
-   border: 3px solid #198754;
-   border-radius: 30px;
+   border-radius: 20px;
    width: 102%;
+  box-shadow: 0px 0px 10px 0px #198754;
+  
 }
 .card-img {
    width: 100px;
@@ -284,8 +367,10 @@ const store = useCounterStore()
   .card2 {
    width: 45%; /* 카드 너비 조정 */
   height: 150px;
-  border: 3px solid #198754;
-  border-radius: 30px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px 0px #198754;
+  padding: 10px;
+
   box-sizing: border-box;
   position: relative;
 }
@@ -312,10 +397,15 @@ const store = useCounterStore()
 .card3 {
    border-radius: 30px;
    border: 3px solid white;
+   box-shadow: 0px 0px 10px 0px white;
 }
 .card-img1 {
    width: 100px;
    justify-content: center;
+}
+.card-content > strong{
+   font-size: 20px;
+   padding: 25px;
 }
 }
 
