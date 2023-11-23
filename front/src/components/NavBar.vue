@@ -38,6 +38,9 @@
                      <RouterLink :to="{ name: 'InstallmentProductsView' }" class="menu-link"><strong>적금조회</strong></RouterLink>
                   </li>
                   <li class="is-on">
+                     <RouterLink :to="{ name: 'RecommendView' }" class="menu-link"><strong>금융상품추천</strong></RouterLink>
+                  </li>
+                  <li class="is-on">
                      <!-- <a href="" title="은행찾기">은행찾기</a> -->
                      <RouterLink :to="{ name: 'MapView' }" class="menu-link"><strong>은행찾기</strong></RouterLink>
                   </li>

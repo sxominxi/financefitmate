@@ -257,7 +257,7 @@ onBeforeUnmount(() => {
 }
 
 .card:hover {
-  transform: translateY(-5px); /* 호버 시 카드 약간 위로 이동 */
+  transform: translateY(-10px); /* 호버 시 카드 약간 위로 이동 */
   box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 크게 */
   /* 추가적인 호버 효과 스타일링 */
 }
@@ -320,7 +320,7 @@ onBeforeUnmount(() => {
 }
 .card2:hover {
    border: 1px solid #ddd;
-  transform: translateY(-5px); /* 호버 시 카드 약간 위로 이동 */
+  transform: translateY(-10px); /* 호버 시 카드 약간 위로 이동 */
   box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 크게 */
   /* 추가적인 호버 효과 스타일링 */
 }
@@ -370,7 +370,7 @@ onBeforeUnmount(() => {
 }
 .card2:hover {
    border: 1px solid #ddd;
-  transform: translateY(-5px); /* 호버 시 카드 약간 위로 이동 */
+  transform: translateY(-10px); /* 호버 시 카드 약간 위로 이동 */
   box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 크게 */
   /* 추가적인 호버 효과 스타일링 */
 }
