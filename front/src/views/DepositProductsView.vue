@@ -2,7 +2,9 @@
    <div id="wrap">
       <div class="check">
          <div class="inner">
-            <h1>정기 예금</h1>
+            <div class="title border border-success">
+                <h1>정기 예금</h1>
+            </div>
          </div>
          <div class="select-list">
             <select class="bank form-select" v-model="bank" aria-label="Default select example">
@@ -23,15 +25,17 @@
                     <div v-if="product_info.save_trm == duration">
                         <div class="card-body" >
                             <h5 class="card-title fs-3 fw-bold text-success">{{ product.fin_prdt_nm }}</h5>
-                            <div class="card-main">
-                                <div class="card-info">
-                                    <p class="card-text">저축 기간: {{ product_info.save_trm }} 개월</p>
-                                    <p class="card-text">이자 계산 방식: {{ product_info.intr_rate_type_nm }}</p>
+                            <div class="card-function">
+                                <div class="card-main">
+                                    <div class="card-info">
+                                        <p class="card-text">저축 기간: {{ product_info.save_trm }} 개월</p>
+                                        <p class="card-text">이자 계산 방식: {{ product_info.intr_rate_type_nm }}</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="intr">
-                                <p class="card-text text-danger">최고 우대 금리: {{ product_info.intr_rate2 }}</p>
-                                <p class="card-text">기본 금리: {{ product_info.intr_rate }}</p>
+                                <div class="intr">
+                                    <p class="card-text text-danger">최고 우대 금리: {{ product_info.intr_rate2 }}</p>
+                                    <p class="card-text">기본 금리: {{ product_info.intr_rate }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -130,5 +134,20 @@ const goDetail = function(deposit_id) {
     display: flex;
     flex-direction: column;
     align-items: end;
+ }
+
+ .card-function {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+ }
+
+ .title {
+    display: flex;
+    align-items: center;
+    justify-content: start; 
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box; 
  }
 </style>
