@@ -151,6 +151,7 @@
           // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
           infowindow.value.setContent('<div style="font-size: 12px; padding: 4px;">' + place.place_name + '</div>'); 
           infowindow.value.open(map, marker);
+          console.log(infowindow.value.a.innerText)
       })
   }
 </script>
