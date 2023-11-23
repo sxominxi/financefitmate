@@ -149,9 +149,7 @@
 
  <style scoped >
  .box{
-     display: flex;
-     flex-direction: column;
-     align-items: center;
+     
  }
  .wrapper {
      margin-left: auto;

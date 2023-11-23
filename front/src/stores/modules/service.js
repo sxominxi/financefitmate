@@ -71,7 +71,7 @@ export const useServiceStore = defineStore('service', () => {
         })
     }
 
-
+  
     return { 
         getExchanges, 
         exchange, 

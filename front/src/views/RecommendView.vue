@@ -54,6 +54,39 @@ const goDetailInstallment = function(installment_id) {
     })
 }  
 
+const DepositProduct = ref([])
+const recommendDepoist = function() {
+    for (const item of store2.depositproducts) {
+        for (const recommenditem of store.customProduct) {
+            if ( item.fin_prdt_cd === recommenditem) {
+                DepositProduct.value.push(item)
+            }
+        }
+    }
+}
+
+const InstallmentProduct = ref([])
+const recommendInstallment = function() {
+    for (const item2 of store2.installmentproducts) {
+        console.log(item2)
+        for (const recommenditem of store.customProduct) {
+            if ( item2.fin_prdt_cd === recommenditem) {
+                InstallmentProduct.value.push(item2)
+            }
+        }
+    }
+}
+
+console.log(store2.installmentproducts)
+onMounted(() => {
+    store.recommendProducts()
+    store.userFind()
+    store2.getDepositProducts()
+    store2.getInstallmentProducts()
+    recommendDepoist()
+    recommendInstallment()
+})
+
 
 onMounted(() => {
     store.recommendProducts()
