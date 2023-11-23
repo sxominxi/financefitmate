@@ -231,10 +231,5 @@ def map_info(request):
     headers = {
         "Authorization": "8d2a6579e21785248893d93db12118c8"
     }
-
-
-
-
-
-
-    pass
+    places = requests.get(url, headers = headers).json()
+    return Response(places)

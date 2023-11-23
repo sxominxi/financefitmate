@@ -112,7 +112,7 @@
                                     <span class="menu-img">
                                        <img src="@/assets/newspaper.png" alt="">
                                     </span>
-                                    <strong class="comps_text">금융꿀팁</strong>
+                                    <strong class="comps_text">커뮤니티</strong>
                                  </RouterLink>
                               </li>
                               <li class="menu-item">
