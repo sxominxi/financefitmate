@@ -221,15 +221,3 @@ def recommend(request):
     recommended_products = [product for product, _ in sorted_products if product.strip()]
 
     return Response(recommended_products)
-
-
-# ----------------------------------------------------------------------------------------------
-# 위치 정보 출력
-
-def map_info(request):
-    url = f'https://dapi.kakao.com/v2/local/search/keyword.json?query=KB국민은행ATM 조원주공APT단지상가'
-    headers = {
-        "Authorization": "8d2a6579e21785248893d93db12118c8"
-    }
-    places = requests.get(url, headers = headers).json()
-    return Response(places)
