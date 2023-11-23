@@ -2,11 +2,27 @@
    <div id="wrap">
       <div id="header" class="check">
          <div id="container" class="inner">
-               <div class="main-img">
-                  <div v-for="(item, index) in items" :key="index" :class="{ active: currentIndex === index }">
-                     <img :src="item.image" alt="">
-                     <strong>{{ item.text }}</strong>
+
+               <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                     <div class="carousel-item active">
+                        <img src="@/assets/001.png" class="d-block w-100" alt="...">
+                     </div>
+                     <div class="carousel-item">
+                        <img src="@/assets/002.png" class="d-block w-100" alt="...">
+                     </div>
+                     <div class="carousel-item">
+                        <img src="@/assets/003.png" class="d-block w-100" alt="...">
+                     </div>
                   </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                     <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                     <span class="visually-hidden">Next</span>
+                  </button>
                </div>
 
             <div id="content" class="content">
@@ -121,6 +137,11 @@
                   
                </div>
             </div>
+            <div class="">
+               <p>Cha JunSeock | Seo MinJi</p>
+               <P>010-6649-5142 | 010-4123-5537</P>
+               <p>FinanceFitMate</p>
+            </div>
          </div>
       </div>
    </div>
@@ -163,44 +184,6 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-.main-img {
-  display: flex;
-  justify-content: center;
-  align-items: center; /* 요소들을 세로 중앙 정렬하기 위해 추가 */
-  width: 1000px; /* 가로 크기 조절 */
-  height: 330px; /* 세로 크기 조절 */
-  margin: 0 auto; /* 중앙 정렬을 위한 margin 설정 */
-}
-
-.main-img img {
-   max-width: 40%; /* 이미지 너비 조정 */
-  max-height: 100%; /* 이미지 높이 조정 */
-  order: 2; /* 이미지를 맨 뒤로 배치 */
-  padding-bottom: 100px;
-}
-
-.main-img strong {
-  /* display: block;
-  text-align: right;
-  margin-top: 10px;
-  font-weight: bold; */
-  max-width: 50%; /* 텍스트 너비 조정 */
-  order: 1; /* 텍스트를 맨 앞으로 배치 */
-  text-align: left; /* 텍스트를 왼쪽 정렬 */
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-.main-img div {
-  display: none;
-  transition: opacity 1s ease-in-out;
-}
-
-.main-img div.active {
-  display: block;
-  opacity: 1;
-}
-
 /* 고객님과 가입금융상품 div */
 .top_quick_list {
    display: flex;
@@ -245,13 +228,14 @@ onBeforeUnmount(() => {
 .card-wrapper {
   display: flex;
   justify-content: space-around;
+  
 }
 
 .card {
   width: 45%; /* 카드 너비 조정 */
   height: 150px;
   border-radius: 20px;
-  box-shadow: 0px 0px 10px 0px #198754;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
   padding: 10px;
   box-sizing: border-box;
   position: relative;
@@ -271,6 +255,13 @@ onBeforeUnmount(() => {
    font-size: 20px;
    /* padding: 25px; */
 }
+
+.card:hover {
+  transform: translateY(-5px); /* 호버 시 카드 약간 위로 이동 */
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 크게 */
+  /* 추가적인 호버 효과 스타일링 */
+}
+
 .card-hover {
   display: none;
   position: absolute;
@@ -284,8 +275,8 @@ onBeforeUnmount(() => {
   display: block;
 }
 
-.card-content:hover {
-  border: none ; /* border 없애기 */
+.card-content:hover strong {
+  opacity: 0; /* 텍스트를 투명하게 처리하여 숨김 */
 }
 
 /* 내가 가입한 금융상품 */
@@ -318,20 +309,22 @@ onBeforeUnmount(() => {
 }
 .card2 {
    width: 45%; /* 카드 너비 조정 */
-   height: 75px;
+   height: 85px;
   border-radius: 20px;
-  box-shadow: 0px 0px 10px 0px #198754;
+  border: 1px solid #ddd;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
   padding: 10px;
   box-sizing: border-box;
   position: relative;
   margin-bottom: 10px;
 }
-.card3 {
-   border-radius: 20px;
-   width: 102%;
-  box-shadow: 0px 0px 10px 0px #198754;
-  
+.card2:hover {
+   border: 1px solid #ddd;
+  transform: translateY(-5px); /* 호버 시 카드 약간 위로 이동 */
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 크게 */
+  /* 추가적인 호버 효과 스타일링 */
 }
+
 .card-img {
    width: 100px;
    justify-content: center;
@@ -368,12 +361,20 @@ onBeforeUnmount(() => {
    width: 45%; /* 카드 너비 조정 */
   height: 150px;
   border-radius: 20px;
-  box-shadow: 0px 0px 10px 0px #198754;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
   padding: 10px;
+  border: 1px solid #ddd;
 
   box-sizing: border-box;
   position: relative;
 }
+.card2:hover {
+   border: 1px solid #ddd;
+  transform: translateY(-5px); /* 호버 시 카드 약간 위로 이동 */
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 크게 */
+  /* 추가적인 호버 효과 스타일링 */
+}
+
 .my_finance img.investment {
   max-width: 70px; /* 이미지의 최대 너비 설정 */
   order: -1; /* 이미지를 텍스트 앞에 배치합니다. */
@@ -394,11 +395,7 @@ onBeforeUnmount(() => {
   flex-wrap: wrap; /* 요소들이 가로로 정렬되면서 넘치면 다음 줄로 이동 */
   justify-content: center;
 }
-.card3 {
-   border-radius: 30px;
-   border: 3px solid white;
-   box-shadow: 0px 0px 10px 0px white;
-}
+
 .card-img1 {
    width: 100px;
    justify-content: center;
@@ -426,7 +423,7 @@ onBeforeUnmount(() => {
 
 .comps ul li {
   margin-bottom: 10px;
-  margin-right: 10px; /* 각 리스트 아이템 간의 간격 조정 */
+  margin-right: 20px; /* 각 리스트 아이템 간의 간격 조정 */
 }
 
 .menu-link {
@@ -464,6 +461,10 @@ onBeforeUnmount(() => {
    margin-left: 20px;
    margin-top: 10px;
    display: block;
+}
+
+.carousel {
+   margin-bottom: 70px;
 }
 
 </style>
