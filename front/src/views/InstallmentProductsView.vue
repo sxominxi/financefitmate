@@ -65,7 +65,6 @@
 import { useServiceStore } from '@/stores/modules/service'
 import { ref, onMounted, computed } from 'vue'
 import { useRouter } from 'vue-router';
-import axios from 'axios';
 
 const router = useRouter()
 const store = useServiceStore()
@@ -114,7 +113,7 @@ const goDetail = function(installment_id) {
    display: flex;
    flex-direction: row;
    justify-content: left;
-   align-items: center; /* 중앙 정렬을 위해 추가 */
+   align-items: center;
    padding-left: 20px;
    padding-right: 20px;
  }
@@ -127,8 +126,8 @@ const goDetail = function(installment_id) {
 
  .select-list > button {
    width: 80px;
-   height: 48px; /* 선택한 높이에 맞게 조절 */
-   margin: 30px 10px; /* 간격 조절 */
+   height: 48px; 
+   margin: 30px 10px;
  }
 
  .card {

@@ -36,10 +36,6 @@
  </script>
  
  <style scoped>
- .create-button {
-
- }
-
 
  </style>
  

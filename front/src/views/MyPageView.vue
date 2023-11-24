@@ -37,65 +37,6 @@
                         <div class="subtitle">
                             <h2><strong>알고리즘 기반 맞춤 상품 추천</strong></h2>
                         </div>
-                        <!-- 캐루젤 시작 -->
-                        <!-- <div id="carouselExampleCaptions" class="carousel slide">
-                            <div class="carousel-indicators">
-                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                            </div>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <div class="box1">
-                                    </div>
-                                    <div class="carousel-caption d-none d-md-block" @click="goDetailDeposit(DepositProduct[0].id)">
-                                        <div class="carousel-item">
-                                            <img src="@/assets/c001.png" class="d-block w-100" alt="...">
-                                        </div>
-                                        <h5>{{DepositProduct[0]?.fin_prdt_nm}}</h5>
-                                        <button type="button" class="btn btn-outline-secondary" disabled>누구나 가입</button>
-                                        <button type="button" class="btn btn-outline-secondary" disabled>방문없이 가입</button>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="box2">
-                                    </div>
-                                    <div class="carousel-caption d-none d-md-block" @click="goDetailDeposit(DepositProduct[1].id)">
-                                        <h5>{{ DepositProduct[1]?.fin_prdt_nm }}</h5>
-                                        <button type="button" class="btn btn-outline-secondary" disabled>누구나 가입</button>
-                                        <button type="button" class="btn btn-outline-secondary" disabled>방문없이 가입</button>
-                                    </div>
-                                </div>
-                                <div class="carousel-item" @click="goDetailInstallment(InstallmentProduct[0].id)">
-                                    <div class="box3">
-                                    </div>
-                                    <div class="carousel-caption d-none d-md-block" >
-                                        <h5>{{ InstallmentProduct[0]?.fin_prdt_nm }}</h5>
-                                        <button type="button" class="btn btn-outline-secondary" disabled>누구나 가입</button>
-                                        <button type="button" class="btn btn-outline-secondary" disabled>방문없이 가입</button>
-                                    </div>
-                                </div>
-                                <div class="carousel-item" @click="goDetailInstallment(InstallmentProduct[1].id)">
-                                    <div class="box4">
-                                    </div>
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h5>{{InstallmentProduct[1]?.fin_prdt_nm}}</h5>
-                                        <button type="button" class="btn btn-outline-secondary" disabled>누구나 가입</button>
-                                        <button type="button" class="btn btn-outline-secondary" disabled>방문없이 가입</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div> -->
-                        <!-- 캐루젤 끝 -->
                         <div id="carouselExampleDark" class="carousel carousel-dark slide">
                             <div class="carousel-indicators">
                                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -302,9 +243,8 @@ onMounted(() => {
 }
 
 .btn:hover {
-    transform: translateY(-10px); /* 호버 시 카드 약간 위로 이동 */
-  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 크게 */
-  /* 추가적인 호버 효과 스타일링 */
+    transform: translateY(-10px); 
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); 
 }
 
 .my-info {
@@ -348,7 +288,7 @@ onMounted(() => {
 
 .carousel-inner {
     width: 100%;
-    height: 100%; /* Make the carousel-inner fill the available height */
+    height: 100%;
 }
 .carousel-item {
     width: 100%;
@@ -356,29 +296,25 @@ onMounted(() => {
 }
 
 img {
-    object-fit: cover; /* Maintain aspect ratio while covering the entire container */
-    width: 100%; /* Make the image fill the container width */
-    height: 100%; /* Make the image fill the container height */
+    object-fit: cover; 
+    width: 100%;
+    height: 100%; 
     border-radius: 20px;
 }
 
 .box1 {
-    /* border: 1px solid blue; */
     width: 100%;
     height: 100%
 }
 .box2 {
-    /* border: 1px solid red; */
     width: 100%;
     height: 100%
 }
 .box3 {
-    /* border: 1px solid yellow; */
     width: 100%;
     height: 100%
 }
 .box4 {
-    /* border: 1px solid green; */
     width: 100%;
     height: 100%
 }
@@ -411,17 +347,6 @@ img {
 .carousel h5 {
     color: black
 }
-
-/* .carousel-control-prev span{
-    background-color: black;
-}
-.carousel-control-next span{
-    background-color: black;
-}
-
-.carousel:hover {
-    cursor: pointer;
-} */
 
 .carousel-indicators button{
     background-color: black;
@@ -464,7 +389,7 @@ img {
 .my-deposit,
 .my-installment
 {
-    width: 50%; /* 카드 너비 조정 */
+    width: 50%;
     height: 150px;
     border-radius: 20px;
     box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
@@ -474,20 +399,19 @@ img {
 }
 
 .my-deposit:hover{
-    transform: translateY(-10px); /* 호버 시 카드 약간 위로 이동 */
-    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 크게 */
+    transform: translateY(-10px);
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
 }
 .my-installment:hover{
-    transform: translateY(-10px); /* 호버 시 카드 약간 위로 이동 */
-    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 크게 */
+    transform: translateY(-10px);
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 .circular-image {
     padding: 10px;
-    width: 200px; /* 이미지의 가로 크기를 지정합니다. */
-    height: 200px; /* 이미지의 세로 크기를 지정합니다. */
-    object-fit: cover; /* 이미지가 잘리지 않고 비율을 유지하도록 설정합니다. */
-    border-radius: 50%; /* 50%로 설정하여 이미지를 원형으로 만듦 */
-    /* 필요에 따라 추가적인 스타일링을 적용할 수 있음 */
+    width: 200px;
+    height: 200px; 
+    object-fit: cover; 
+    border-radius: 50%; 
 }
 </style>

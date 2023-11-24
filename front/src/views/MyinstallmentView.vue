@@ -102,7 +102,6 @@
      }
      chartOptions.value = {
      responsive: true,
-     // maintainAspectRatio: true,
      scales: {
          y: {
              suggestedMin: 0,

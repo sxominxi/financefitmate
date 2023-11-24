@@ -30,32 +30,23 @@
             <div id="gnb" class="gnb">
                <ul>
                   <li class="is-on">
-                     <!-- <a href="" title="금융상품조회">예금조회</a> -->
                      <RouterLink :to="{ name: 'DepositProductsView' }" class="menu-link"><strong>예금조회</strong></RouterLink>
                   </li>
                   <li class="is-on">
-                     <!-- <a href="" title="금융상품조회">적금조회</a> -->
                      <RouterLink :to="{ name: 'InstallmentProductsView' }" class="menu-link"><strong>적금조회</strong></RouterLink>
                   </li>
                   <li class="is-on">
                      <RouterLink :to="{ name: 'RecommendView' }" class="menu-link"><strong>금융상품추천</strong></RouterLink>
                   </li>
                   <li class="is-on">
-                     <!-- <a href="" title="은행찾기">은행찾기</a> -->
                      <RouterLink :to="{ name: 'MapView' }" class="menu-link"><strong>은행찾기</strong></RouterLink>
                   </li>
                   <li class="is-on">
-                     <!-- <a href="" title="환율계산기"></a> -->
                      <RouterLink :to="{ name: 'ExchangeView' }" class="menu-link"><strong>환율계산기</strong></RouterLink>
                   </li>
                   <li class="is-on">
-                     <!-- <a href="" title="커뮤니티">커뮤니티</a> -->
                      <RouterLink :to="{ name: 'PostView' }" class="menu-link"><strong>커뮤니티</strong></RouterLink>
                   </li>
-                  <!-- <li class="is-on"> -->
-                     <!-- <a href="" title="마이페이지">마이페이지</a> -->
-                     <!-- <RouterLink :to="{ name: 'MyPageView' }" class="menu-link"><strong>마이페이지</strong></RouterLink> -->
-                  <!-- </li> -->
                </ul>
             </div>
          </div>
@@ -82,18 +73,15 @@ const store = useCounterStore()
   padding: 20px 0;
   width: 100%;
   position: relative;
-  overflow: hidden; /* 부모 요소의 내용이 넘칠 때 숨김 처리 */
+  overflow: hidden;
 }
 
-/* 미디어 쿼리를 이용한 반응형 조정 */
 @media screen and (max-width: 1260px) {
-  /* 현재 창 크기가 1000px 이하인 경우 */
   .direct_hi_header {
-    padding: 20px 0; /* 상하 여백은 필요에 따라 조절하세요 */
+    padding: 20px 0;
   }
 }
 
-/* Top Menu */
 .top_menu {
   margin-bottom: 20px;
 }
@@ -116,7 +104,6 @@ const store = useCounterStore()
   margin-right: 10px;
 }
 
-/* Header Inner */
 .header_inner {
   display: flex;
   align-items: center;
@@ -126,7 +113,7 @@ const store = useCounterStore()
 
 .blind{
    margin-right: 20px;
-   text-decoration: none; /* 밑줄 제거 */
+   text-decoration: none;
 }
 
 .blind > img {
@@ -134,7 +121,6 @@ const store = useCounterStore()
    margin-bottom: 7px;
 }
 
-/* GNB */
 .gnb ul {
   list-style: none;
   padding: 0;
@@ -147,11 +133,10 @@ const store = useCounterStore()
 }
 
 .logout-form {
-  display: inline-block; /* 폼을 인라인 레벨로 변경하여 다른 컨텐츠와 나란히 위치하도록 설정합니다. */
-  margin-left: 0px; /* 버튼과의 간격 설정 */
+  display: inline-block;
+  margin-left: 0px;
 }
 
-/* 로그아웃 버튼 스타일 */
 .logout-btn {
   font-size: 15px;
   border: none;
@@ -162,14 +147,14 @@ const store = useCounterStore()
 }
 
 .menu-link1 {
-  color: #333; /* 글자 색상 통일 */
-  text-decoration: none; /* 밑줄 제거 */
+  color: #333;
+  text-decoration: none;
   font-size: 15px;
 }
 
 .menu-link {
-  color: #333; /* 글자 색상 통일 */
-  text-decoration: none; /* 밑줄 제거 */
+  color: #333;
+  text-decoration: none;
   font-size: 17px;
 }
 

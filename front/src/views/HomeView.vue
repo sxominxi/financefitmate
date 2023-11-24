@@ -58,7 +58,7 @@
 
                      <div class="my_finance">
                         <div class="comp_quick_list2">
-                           <div class="divbox"> <!-- 얘는 안보이는 박스임 -->
+                           <div class="divbox">
                               <h2>내가 가입한 금융 상품</h2>
                               <img class="investment" src="@/assets/target.png" alt="기본인사">
                            </div>
@@ -167,7 +167,6 @@ const items = [
   { image: routeImage, text: '가까운 은행 찾기' },
   { image: bankImage, text: '커뮤니티' },
   { image: moneybagImage, text: 'financefitmate 만나고 부자되자' },
-  // 다른 이미지 항목들
 ]
 
 const goDeposit = function( ) {
@@ -206,47 +205,42 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-/* 고객님과 가입금융상품 div */
 .top_quick_list {
    display: flex;
 }
-/* 고객님, 어떤 상품을 찾으시나요 ? */
 .comp_quick_list{
    border-radius: 30px;
    width: 50%;
 }
 
 .top_quick_title {
-  /* border: 3px solid transparent; 기존 보더 초기화 */
-  position: relative; /* 상대 위치 설정 */
-  display: flex; /* Flexbox 사용 */
-  align-items: center; /* 수직 가운데 정렬 */
+  position: relative; 
+  display: flex; 
+  align-items: center;
   padding-bottom: 20px;
 }
 
 .top_quick_title h2 {
-  font-size: 20px; /* 텍스트의 글꼴 크기 설정 */
+  font-size: 20px;
   margin: 0;
   line-height: 30px;
 }
 
 .top_quick_title::after {
   position: absolute;
-  content: ''; /* 가상 요소를 생성하여 보더를 만듭니다. */
+  content: '';
   bottom: 0;
   left: 0;
-  /* width: calc(100% - 100px); 텍스트 너비 계산 (이미지 너비 100px 감안) */
 }
 
 .top_quick_title img.investment {
-  max-width: 70px; /* 이미지의 최대 너비 설정 */
-  order: -1; /* 이미지를 텍스트 앞에 배치합니다. */
+  max-width: 70px;
+  order: -1;
   margin-right: 10px;
   margin-left: 10px;
   padding-inline-start: 15px;
 }
 
-/* 예적금 카드 */
 .card-wrapper {
   display: flex;
   justify-content: space-around;
@@ -254,7 +248,7 @@ onBeforeUnmount(() => {
 }
 
 .card {
-  width: 45%; /* 카드 너비 조정 */
+  width: 45%;
   height: 150px;
   border-radius: 20px;
   box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
@@ -270,18 +264,16 @@ onBeforeUnmount(() => {
    height: 100%;
    position: relative;
    display: inline-block;
-   z-index: 2; /* card-hover 위로 올려주기 위한 z-index 설정 */
+   z-index: 2;
 }
 
 .card-content > strong{
    font-size: 20px;
-   /* padding: 25px; */
 }
 
 .card:hover {
-  transform: translateY(-5px); /* 호버 시 카드 약간 위로 이동 */
-  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 크게 */
-  /* 추가적인 호버 효과 스타일링 */
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 .card-hover {
@@ -298,19 +290,18 @@ onBeforeUnmount(() => {
 }
 
 .card-content:hover strong {
-  opacity: 0; /* 텍스트를 투명하게 처리하여 숨김 */
+  opacity: 0; 
 }
 
-/* 내가 가입한 금융상품 */
 .my_finance {
    width: 50%;
 }
 .my_finance h2 {
-   font-size: 20px; /* 텍스트의 글꼴 크기 설정 */
+   font-size: 20px; 
    margin: 0;
 }
 .my_finance img.investment {
-  max-width: 70px; /* 이미지의 최대 너비 설정 */
+  max-width: 70px;
   margin-right: 10px;
   margin-left: 10px;
 }
@@ -320,17 +311,16 @@ onBeforeUnmount(() => {
 }
 
 .comp_quick_title {
-  /* border: 3px solid transparent; 기존 보더 초기화 */
-  position: relative; /* 상대 위치 설정 */
-  display: flex; /* Flexbox 사용 */
-  align-items: center; /* 수직 가운데 정렬 */
+  position: relative;
+  display: flex;
+  align-items: center; 
   margin-inline-start: 10px;
 }
 .comp_quick_title > h2 {
   padding-inline-start: 10px;
 }
 .card2 {
-   width: 45%; /* 카드 너비 조정 */
+   width: 45%; 
    height: 85px;
   border-radius: 20px;
   border: 1px solid #ddd;
@@ -342,9 +332,8 @@ onBeforeUnmount(() => {
 }
 .card2:hover {
    border: 1px solid #ddd;
-  transform: translateY(-5px); /* 호버 시 카드 약간 위로 이동 */
-  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 크게 */
-  /* 추가적인 호버 효과 스타일링 */
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); 
 }
 
 .card-img {
@@ -357,10 +346,9 @@ onBeforeUnmount(() => {
 }
 
 .divbox {
-  /* border: 3px solid transparent; 기존 보더 초기화 */
-  position: relative; /* 상대 위치 설정 */
-  display: flex; /* Flexbox 사용 */
-  align-items: center; /* 수직 가운데 정렬 */
+  position: relative;
+  display: flex;
+  align-items: center;
   visibility: hidden;
   padding-bottom: 14.2px;
 }
@@ -368,10 +356,10 @@ onBeforeUnmount(() => {
 @media screen and (max-width: 1260px) {
   .my_finance,
   .comp_quick_list {
-    width: 100%; /* 모바일 화면일 때 가득 채우도록 설정 */
-    box-sizing: border-box; /* 내부 여백과 테두리를 포함한 전체 너비로 설정 */
+    width: 100%;
+    box-sizing: border-box;
 
-    margin-bottom: 50px; /* 아래 여백 추가 */
+    margin-bottom: 50px;
   }
   .top_quick_list {
    display: inline;
@@ -380,7 +368,7 @@ onBeforeUnmount(() => {
    display: none;
   }
   .card2 {
-   width: 45%; /* 카드 너비 조정 */
+   width: 45%;
   height: 150px;
   border-radius: 20px;
   box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
@@ -392,29 +380,27 @@ onBeforeUnmount(() => {
 }
 .card2:hover {
    border: 1px solid #ddd;
-  transform: translateY(-5px); /* 호버 시 카드 약간 위로 이동 */
-  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 크게 */
-  /* 추가적인 호버 효과 스타일링 */
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); 
 }
 
 .my_finance img.investment {
-  max-width: 70px; /* 이미지의 최대 너비 설정 */
-  order: -1; /* 이미지를 텍스트 앞에 배치합니다. */
+  max-width: 70px; 
+  order: -1;
   margin-right: 10px;
   margin-left: 10px;
 }
 .comp_quick_title {
-  /* border: 3px solid transparent; 기존 보더 초기화 */
-  position: relative; /* 상대 위치 설정 */
-  display: flex; /* Flexbox 사용 */
-  align-items: center; /* 수직 가운데 정렬 */
+  position: relative;
+  display: flex; 
+  align-items: center;
 }
 .comps ul {
-  list-style-type: none; /* 점 표시 없애기 */
+  list-style-type: none; 
   padding: 20px;
   margin-top: 20px;
   display: flex;
-  flex-wrap: wrap; /* 요소들이 가로로 정렬되면서 넘치면 다음 줄로 이동 */
+  flex-wrap: wrap; 
   justify-content: center;
 }
 
@@ -428,36 +414,34 @@ onBeforeUnmount(() => {
 }
 }
 
-/* comp */
-
 .comps{
    border-radius: 30px;
 }
 
 .comps ul {
-  list-style-type: none; /* 점 표시 없애기 */
+  list-style-type: none;
   padding: 20px;
   margin-top: 50px;
   display: flex;
-  flex-wrap: wrap; /* 요소들이 가로로 정렬되면서 넘치면 다음 줄로 이동 */
+  flex-wrap: wrap; 
   justify-content: center;
 }
 
 .comps ul li {
   margin-bottom: 10px;
-  margin-right: 20px; /* 각 리스트 아이템 간의 간격 조정 */
+  margin-right: 20px;
 }
 
 .menu-link {
-  text-decoration: none; /* 링크 밑줄 제거 */
-  color: inherit; /* 기본 링크 색상 사용 */
+  text-decoration: none; 
+  color: inherit; 
   font-weight: bold;
   padding: 10px;
 }
 
 .comps img {
-   max-width: 70px; /* 이미지의 최대 너비 설정 */
-   order: -1; /* 이미지를 텍스트 앞에 배치합니다. */
+   max-width: 70px; 
+   order: -1; 
    margin-right: 10px;
    margin-left: 10px;
 }

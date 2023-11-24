@@ -57,7 +57,6 @@
      }
    })
      .then((res) => {
-       // console.log(res)
        router.push({ name: 'PostView' })
      })
      .catch((err) => {

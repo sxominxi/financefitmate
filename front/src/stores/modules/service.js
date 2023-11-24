@@ -1,7 +1,6 @@
 import axios from 'axios'
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import { useRouter } from 'vue-router'
 
 export const useServiceStore = defineStore('service', () => {
     const API_URL = 'http://127.0.0.1:8000'

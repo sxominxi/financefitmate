@@ -30,7 +30,7 @@ export const useCounterStore = defineStore('counter', () => {
          console.log(err)
       })
    }
-  // DRF에 article 조회 요청을 보내는 action
+   
   const getPosts = function () {
     axios({
       method: 'get',
@@ -38,7 +38,6 @@ export const useCounterStore = defineStore('counter', () => {
       headers: {Authorization: `Token ${token.value}`}
     })
       .then((res) =>{
-        // console.log(res)
         posts.value = res.data
       })
       .catch((err) => {
@@ -53,7 +52,6 @@ export const useCounterStore = defineStore('counter', () => {
           url: `${API_URL}/posts/comments/`
       })
       .then((res) => {
-          // console.log(comments.value)
           comments.value = res.data
       })
       .catch((err) => {
@@ -77,6 +75,7 @@ export const useCounterStore = defineStore('counter', () => {
         logIn({ username, password })
       })
       .catch((err) => {
+        window.alert('모든 정보를 입력해주세요.')
         console.log(err)
       })
   }
@@ -98,6 +97,7 @@ export const useCounterStore = defineStore('counter', () => {
         router.push({ name: 'HomeView' })
       })
       .catch((err) => {
+        window.alert('아이디/패스워드가 틀렸습니다.')
         console.log(err)
       })
   }
@@ -122,11 +122,11 @@ export const useCounterStore = defineStore('counter', () => {
     axios({
       method: 'post',
       url: `${API_URL}/accounts/logout/`,
-      // headers: {Authorization: `Token ${token.value}`}
     })
       .then((res) => {
         token.value = null
         router.push({ name: 'HomeView' })
+        
       })
       .catch((err) => {
         console.log(err)
