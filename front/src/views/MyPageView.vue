@@ -24,11 +24,11 @@
                 </div>
                 <div class="products-box">
                     <div class="my-products">
-                        <div class="my-deposit">
+                        <div class="my-deposit" @click="goMydeposit">
                             <h2><strong>내가 추가한 예금 상품</strong></h2>
                             <button @click="goMydeposit">{{ depositlength }} 개</button>
                         </div>
-                        <div class="my-installment">
+                        <div class="my-installment" @click="goMyinstallment">
                             <h2><strong>내가 추가한 적금 상품</strong></h2>
                             <button @click="goMyinstallment">{{ installmentlength }} 개</button>
                         </div>
@@ -327,7 +327,20 @@ img {
 }
 
 .carousel-caption {
+    margin-bottom: 50px;
+}
+
+.carousel-caption > h5 {
+    font-size: 30px;
+}
+
+@media screen and (max-width: 1260px) {
+.carousel-caption > h5 {
+    font-size: 25px;
+}
+.carousel-caption {
     margin-bottom: 20px;
+}
 }
 
 .carousel-btn {
@@ -413,5 +426,12 @@ img {
     height: 200px; 
     object-fit: cover; 
     border-radius: 50%; 
+}
+
+.my-products:hover {
+    cursor: pointer;
+}
+.carousel:hover {
+    cursor: pointer;
 }
 </style>

@@ -3,13 +3,15 @@
       <div class="check">
          <div class="inner">
             <div class="title-box">
-               <div class="title">
-                  <div class="border border-3 border-bottom-0 border-success rounded-top">
-                     <h1><strong>적금 상세 보기</strong></h1>
+               <div class="title-etc">
+                  <div class="border-3 border-bottom border-success">
                   </div>
                </div>
-               <div class="title-etc">
-                  <div class="border-3 border-bottom border-success"></div>
+               <div class="title">
+                  
+                  <div class="border border-3 border-bottom-0 border-success rounded-top">
+                     <h1 class="fs-3 fw-bold"><strong>적금 상세 보기</strong></h1>
+                  </div>
                </div>
             </div>
 
