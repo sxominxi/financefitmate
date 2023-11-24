@@ -15,8 +15,6 @@ api_key = 'f09a043ec54a3da97ecf32c4027e41b8'
 
 @api_view(['GET'])
 def index(request):
-    # url = f'http://finlife.fss.or.kr/finlifeapi/depositProductsSearch.json?auth={api_key}&topFinGrpNo=020000&pageNo=1'
-
     url = f'http://finlife.fss.or.kr/finlifeapi/savingProductsSearch.json?auth={api_key}&topFinGrpNo=020000&pageNo=1'
 
     response = requests.get(url).json()
@@ -174,7 +172,6 @@ def exchange(request):
     API_KEY = 'DBAH4dbneY14sHfaMcBHfx0eJ7AM8lkN'
     URL = f' https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey={API_KEY}&data=AP01'
     response = requests.get(URL).json()
-    print(response)
     return JsonResponse(response, safe=False)
 
 # ---------------------------------------------------------------------------------------------

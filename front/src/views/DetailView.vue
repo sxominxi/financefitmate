@@ -34,7 +34,7 @@
             <form @submit.prevent="createComment">
               <div class="comment-list">
                 <div class="comment-input input-group input-group-sm mb-3">
-                  <span class="input-group-text border-success" id="inputGroup-sizing-sm">{{ userDetailInfo.nickname }}</span>
+                  <span class="input-group-text border-success" id="inputGroup-sizing-sm">{{ store.post.user }}</span>
                   <input type="text" class="form-control border-success" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"  v-model="content">
                 </div>
                  <button class="btn btn-outline-success">댓글 작성</button>
