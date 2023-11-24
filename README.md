@@ -90,5 +90,5 @@
 
 # 주요 기능
 
- ![RESULT1](image/주요 기능1.PNG) 
- ![RESULT2](image/주요 기능2.PNG) 
+ ![RESULT1](image/주요기능1.PNG) 
+ ![RESULT2](image/주요기능2.PNG) 
