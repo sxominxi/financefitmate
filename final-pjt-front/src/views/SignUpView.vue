@@ -30,19 +30,19 @@
                   
                   <div class="form-input">
                      <label class="form-label" for="email">이메일:</label>
-                     <input class="form-control" type="email" id="email" v-model.trim="email"><p class="input-p text-danger">(필수)</p><br>
+                     <input class="form-control" type="email" id="email" v-model.trim="email"><p class="input-p text-danger"></p><br>
                   </div>
                   <div class="form-input">
                      <label class="form-label" for="firstname">이름:</label>
-                     <input class="form-control" type="text" id="firstname" v-model.trim="first_name"><p class="input-p text-danger">(필수)</p><br>
+                     <input class="form-control" type="text" id="firstname" v-model.trim="first_name"><p class="input-p text-danger"></p><br>
                   </div>
                   <div class="form-input">
                      <label class="form-label" for="lastname">성:</label>
-                     <input class="form-control" type="text" id="lastname" v-model.trim="last_name"><p class="input-p text-danger">(필수)</p><br>
+                     <input class="form-control" type="text" id="lastname" v-model.trim="last_name"><p class="input-p text-danger"></p><br>
                   </div>
                   <div class="form-input">
                      <label class="form-label" for="nickname">닉네임:</label>
-                     <input class="form-control" type="text" id="nickname" v-model.trim="nickname"><p class="input-p text-danger">(필수)</p><br>
+                     <input class="form-control" type="text" id="nickname" v-model.trim="nickname"><p class="input-p text-danger"></p><br>
                   </div>
                   <div class="form-input">
                      <label class="form-label" for="age">나이:</label>

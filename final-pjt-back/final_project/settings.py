@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     # REST_AUTH
     'dj_rest_auth',
     'corsheaders',
+    'environ',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
