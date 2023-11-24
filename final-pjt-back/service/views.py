@@ -11,7 +11,7 @@ from django.http import JsonResponse
 from accounts.models import User
 from accounts.serializers import CustomReadSerializer
 
-api_key = 'f09a043ec54a3da97ecf32c4027e41b8'
+api_key = settings.API_KEY
 
 @api_view(['GET'])
 def index(request):
@@ -167,9 +167,10 @@ def installment_detail(request, installment_pk):
 # ---------------------------------------------------------------------------------------------
 
 # 환율 계산기
+
+API_KEY = settings.API_KEY2
 @api_view(['GET'])
 def exchange(request):
-    API_KEY = 'DBAH4dbneY14sHfaMcBHfx0eJ7AM8lkN'
     URL = f' https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey={API_KEY}&data=AP01'
     response = requests.get(URL).json()
     return JsonResponse(response, safe=False)
