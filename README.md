@@ -98,5 +98,5 @@
 
 # 서비스 화면
 
-    ![RESULT4](image/메인화면.gif)
-    ![RESULT5](image/반응형.gif)
+![RESULT4](image/메인화면.gif)
+![RESULT5](image/반응형.gif)
