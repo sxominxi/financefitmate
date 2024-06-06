@@ -94,3 +94,9 @@
 
  ![RESULT1](image/주요기능1.PNG) 
  ![RESULT2](image/주요기능2.PNG) 
+
+
+# 서비스 화면
+
+    ![RESULT4](image/메인화면.gif)
+    ![RESULT5](image/반응형.gif)
