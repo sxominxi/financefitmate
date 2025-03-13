@@ -14,6 +14,11 @@
 
 
 
+# 성과
+- 1학기 프로젝트 최우수상
+
+
+
 # 기술 스택
 - API KaKao Map, API 금융감독원, Library vue Vootstrap, Language Python, Language JavaScript
   Database MySql, Framework Vue, Framework Django
